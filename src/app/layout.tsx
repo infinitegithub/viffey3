@@ -4,17 +4,17 @@ import './globals.css';
 import Noise from '@/components/Noise';
 import Cursor from '@/components/Cursor';
 
-const cormorant = Cormorant_Garamond({
+const cormorantGaramond = Cormorant_Garamond({
   subsets: ['latin'],
   weight: ['300', '400', '600', '700'],
   style: ['normal', 'italic'],
-  variable: '--font-display',
+  display: 'swap',
 });
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600'],
-  variable: '--font-body',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -29,8 +29,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${spaceGrotesk.variable}`}>
+    <html lang="en">
       <body className={spaceGrotesk.className}>
+        <style dangerouslySetInnerHTML={{ __html: `
+          :root {
+            --font-display: ${cormorantGaramond.style.fontFamily}, Georgia, serif;
+            --font-body: ${spaceGrotesk.style.fontFamily}, system-ui, sans-serif;
+          }
+        `}} />
         <Noise />
         <Cursor />
         {children}
