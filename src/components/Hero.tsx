@@ -1,112 +1,96 @@
-'use client';
-
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import styles from './Hero.module.css';
 
 export default function Hero() {
-  const containerRef = useRef<HTMLElement>(null);
-  const headlineItems = useRef<(HTMLDivElement | null)[]>([]);
-  const subRef = useRef<HTMLDivElement>(null);
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const line1Ref   = useRef<HTMLDivElement>(null);
+  const line2Ref   = useRef<HTMLDivElement>(null);
+  const line3Ref   = useRef<HTMLDivElement>(null);
+  const line4Ref   = useRef<HTMLDivElement>(null);
+  const subRef     = useRef<HTMLDivElement>(null);
+  const scrollRef  = useRef<HTMLDivElement>(null);
+  const numRef     = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Check if gsap is loaded correctly (to avoid hydration/browser issues)
-    if (!gsap) return;
-
     const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
 
-      // Initial state
-      const tl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1.4 } });
-
-      tl.set(headlineItems.current, { opacity: 0, y: 150, skewY: 10 });
-      tl.set(subRef.current, { opacity: 0, y: 30 });
-      tl.set(scrollRef.current, { opacity: 0, scaleY: 0 });
-
-      // Build sequence
-      tl.to(headlineItems.current, {
-        opacity: 1,
-        y: 0,
-        skewY: 0,
-        stagger: 0.12,
-        delay: 0.4
+      tl.set([line1Ref.current, line2Ref.current, line3Ref.current, line4Ref.current, subRef.current, scrollRef.current, numRef.current], {
+        opacity: 0,
+        yPercent: 100,
       });
 
-      tl.to(subRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 1
-      }, '-=0.8');
-
-      tl.to(scrollRef.current, {
-        opacity: 1,
-        scaleY: 1,
-        duration: 0.8
-      }, '-=0.4');
-
-    }, containerRef);
+      tl.to(line1Ref.current, { yPercent: 0, opacity: 1, duration: 1.2 }, 0.4)
+        .to(line2Ref.current, { yPercent: 0, opacity: 1, duration: 1.2 }, 0.55)
+        .to(line3Ref.current, { yPercent: 0, opacity: 1, duration: 1.2 }, 0.70)
+        .to(line4Ref.current, { yPercent: 0, opacity: 1, duration: 1.2 }, 0.85)
+        .to(subRef.current,   { yPercent: 0, opacity: 1, duration: 0.9 }, 1.1)
+        .to(numRef.current,   { yPercent: 0, opacity: 1, duration: 0.8 }, 1.2)
+        .to(scrollRef.current,{ yPercent: 0, opacity: 1, duration: 0.8 }, 1.3);
+    }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
-  const addToHeadline = (el: HTMLDivElement | null) => {
-    if (el && !headlineItems.current.includes(el)) {
-      headlineItems.current.push(el);
-    }
-  };
-
   return (
-    <section ref={containerRef} className={styles.hero}>
+    <section ref={sectionRef} className={styles.hero} id="home">
       <div className={styles.inner}>
 
-        {/* Marginalia */}
-        <span className={styles.marginNum}>01 // INDEX</span>
+        {/* Margin number — top left */}
+        <div className={styles.marginNum} ref={numRef}>
+          <span>§ 001</span>
+        </div>
 
-        {/* Headlines */}
+        {/* Main headline — four lines to match your local vision */}
         <div className={styles.headlines}>
           <div className={styles.lineWrap}>
-            <div ref={addToHeadline} className={`${styles.line} ${styles.lineLeft}`}>
-              <span className={styles.displayText}>
-                WE BUILD <em className={styles.italic}>NEW</em>
-              </span>
+            <div ref={line1Ref} className={`${styles.line} ${styles.lineLeft}`}>
+              <span className={styles.displayText}>WE BUILD</span>
             </div>
           </div>
 
           <div className={styles.lineWrap}>
-            <div ref={addToHeadline} className={`${styles.line} ${styles.lineRight}`}>
-              <span className={styles.displayText}>
-                DIGITAL <span className={styles.accentDot}>.</span>
-              </span>
+            <div ref={line2Ref} className={`${styles.line} ${styles.lineRight}`}>
+              <span className={`${styles.displayText} ${styles.italic}`}>NEW</span>
             </div>
           </div>
 
           <div className={styles.lineWrap}>
-            <div ref={addToHeadline} className={`${styles.line} ${styles.lineLeft}`}>
-              <span className={styles.displayText}>WORLDS</span>
+            <div ref={line3Ref} className={`${styles.line} ${styles.lineLeft}`}>
+              <span className={styles.displayText}>DIGITAL</span>
+            </div>
+          </div>
+
+          <div className={styles.lineWrap}>
+            <div ref={line4Ref} className={`${styles.line} ${styles.lineRight}`}>
+              <span className={styles.displayText}>
+                WORLDS
+                <span className={styles.accentDot}>.</span>
+              </span>
             </div>
           </div>
         </div>
 
-        {/* Sub Row */}
+        {/* Sub content row */}
         <div ref={subRef} className={styles.sub}>
           <div className={styles.subLeft}>
-            <span className={styles.label}>Est. 2024 — Worldwide</span>
+            <span className={styles.label}>Digital Agency — Est. 2024</span>
           </div>
           <div className={styles.subRight}>
             <p className={styles.subText}>
-              A full-service digital agency focused on building high-performance
-              brands and products. We merge technical excellence with
-              uncompromising aesthetic direction.
+              Web design & development, brand identity,<br />
+              and digital strategy for brands that refuse<br />
+              to be ordinary.
             </p>
           </div>
         </div>
 
         {/* Scroll indicator */}
         <div ref={scrollRef} className={styles.scrollIndicator}>
-          <span className={styles.scrollLabel}>Scroll to explore</span>
           <div className={styles.scrollLine} />
+          <span className={styles.scrollLabel}>Scroll</span>
         </div>
-
       </div>
     </section>
   );
