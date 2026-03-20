@@ -132,13 +132,12 @@ button {
   left: 0;
   pointer-events: none;
   z-index: 9999;
-  mix-blend-mode: difference;
 }
 
 .cursor__dot {
   width: 8px;
   height: 8px;
-  background: var(--white);
+  background: var(--accent);
   border-radius: 50%;
   transform: translate(-50%, -50%);
   transition: transform 0.1s var(--ease-out);
@@ -147,7 +146,7 @@ button {
 .cursor__ring {
   width: 36px;
   height: 36px;
-  border: 1px solid rgba(240, 237, 232, 0.4);
+  border: 1px solid rgba(229, 160, 48, 0.4); /* #e5a030 with opacity */
   border-radius: 50%;
   transform: translate(-50%, -50%);
   transition: width 0.3s var(--ease-out),
