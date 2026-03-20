@@ -1,7 +1,21 @@
 import type { Metadata } from 'next';
+import { Cormorant_Garamond, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import Noise from '@/components/Noise';
 import Cursor from '@/components/Cursor';
+
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['300', '400', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-display',
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600'],
+  variable: '--font-body',
+});
 
 export const metadata: Metadata = {
   title: 'Viffey — Digital Agency',
@@ -15,8 +29,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" className={`${cormorant.variable} ${spaceGrotesk.variable}`}>
+      <body className={spaceGrotesk.className}>
         <Noise />
         <Cursor />
         {children}
