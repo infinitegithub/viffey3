@@ -10,9 +10,8 @@
   position: fixed;
   width: 8px;
   height: 8px;
-  background: var(--white);
+  background: var(--accent);
   border-radius: 50%;
-  mix-blend-mode: difference;
   will-change: transform;
   transition: transform 0.1s cubic-bezier(0.16, 1, 0.3, 1),
               width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
@@ -23,7 +22,7 @@
   position: fixed;
   width: 36px;
   height: 36px;
-  border: 1px solid rgba(240, 237, 232, 0.35);
+  border: 1px solid rgba(229, 160, 48, 0.4);
   border-radius: 50%;
   will-change: transform;
   transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1),
