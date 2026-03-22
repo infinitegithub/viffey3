@@ -2,216 +2,218 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  right: 0;
+  z-index: 100;
   height: var(--nav-h);
-  z-index: 2000;
-  transition: background 0.4s var(--ease-out),
-              border-color 0.4s var(--ease-out),
-              transform 0.4s var(--ease-out);
+  transition: background 0.4s var(--ease-out), border-color 0.4s;
   border-bottom: 1px solid transparent;
 }
 
-.scrolled {
-  background: rgba(8, 8, 8, 0.85);
+.nav.scrolled {
+  background: rgba(8, 8, 8, 0.92);
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border-color: var(--border);
 }
 
 .inner {
-  max-width: 1440px;
   height: 100%;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 0 clamp(1.5rem, 5vw, 5rem);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 2rem;
 }
 
-/* ── Logo ────────────────────────────────────────────────────────────────── */
-.logo {
-  position: relative;
-  z-index: 10;
-}
+/* Logo */
+.logo { display: flex; align-items: center; }
 
-.logoText {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.35rem;
-  letter-spacing: -0.01em;
-  color: var(--white);
+.logoLight {
   display: block;
+  height: 28px;
+  width: auto;
 }
 
-/* ── Desktop Links ───────────────────────────────────────────────────────── */
+.logoDark {
+  display: none;
+  height: 28px;
+  width: auto;
+}
+
+@media (prefers-color-scheme: light) {
+  .logoLight { display: none; }
+  .logoDark { display: block; }
+}
+
+/* Desktop links */
 .desktopLinks {
   display: flex;
+  gap: 2.5rem;
   align-items: center;
-  gap: 3.5rem;
 }
 
-.linkGrid {
-  display: flex;
-  align-items: center;
-  gap: 2.25rem;
-}
-
-.link {
+.navLink {
   font-family: var(--font-body);
   font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(240, 237, 232, 0.5);
-  transition: color 0.3s;
+  font-weight: 400;
+  color: var(--muted);
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  transition: color 0.25s;
   position: relative;
 }
 
-.linkInner { position: relative; }
-
-.link::after {
+.navLink::after {
   content: '';
   position: absolute;
-  bottom: -4px;
+  bottom: -2px;
   left: 0;
   width: 0;
   height: 1px;
   background: var(--accent);
-  transition: width 0.35s var(--ease-out);
+  transition: width 0.3s var(--ease-out);
 }
 
-.link:hover { color: var(--white); }
-.link:hover::after { width: 100%; }
+.navLink:hover { color: var(--white); }
+.navLink:hover::after { width: 100%; }
 
+.linkNum {
+  font-size: 0.5625rem;
+  opacity: 0.4;
+  letter-spacing: 0.05em;
+}
+
+/* CTA */
 .cta {
-  background: var(--white);
-  color: var(--black);
-  padding: 0.65rem 1.4rem;
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  transition: background 0.3s, transform 0.3s var(--ease-out);
-}
-
-.cta:hover {
-  background: var(--accent);
-  transform: translateY(-1px);
-}
-
-/* ── Mobile toggle ───────────────────────────────────────────────────────── */
-.toggle {
-  display: none;
-  position: relative;
-  z-index: 10;
-  width: 3rem;
-  height: 3rem;
-  margin-right: -0.75rem;
-}
-
-.toggleLines {
-  width: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.line {
-  height: 1px;
-  width: 100%;
-  background: var(--white);
-  transition: transform 0.4s var(--ease-out), width 0.4s var(--ease-out);
-}
-
-.open .line:first-child { transform: translateY(3.5px) rotate(45deg); }
-.open .line:last-child { transform: translateY(-3.5px) rotate(-45deg); }
-
-/* ── Mobile menu ─────────────────────────────────────────────────────────── */
-.menu {
-  position: fixed;
-  inset: 0;
-  background: var(--black);
-  z-index: 5;
-  display: flex;
-  flex-direction: column;
-  padding: clamp(6rem, 15vh, 10rem) clamp(1.5rem, 5vw, 5rem);
-  transform: translateY(-100%);
-  transition: transform 0.6s cubic-bezier(0.83, 0, 0.17, 1);
-}
-
-.open .menu { transform: translateY(0); }
-
-.menuInner {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.menuLinks {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.menuLink {
-  display: flex;
-  align-items: baseline;
-  gap: 1.5rem;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.4s, transform 0.4s;
-}
-
-.open .menuLink { opacity: 1; transform: translateY(0); }
-
-.menuLinkNum {
   font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--black);
+  background: var(--accent);
+  padding: 0.55rem 1.25rem;
+  transition: background 0.25s, color 0.25s;
+}
+
+.cta:hover {
+  background: var(--white);
+  color: var(--black);
+}
+
+.menuToggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+  /* iOS / Android tap target — minimum 44×44 */
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuToggle span {
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--white);
+  transition: transform 0.3s var(--ease-out), opacity 0.3s;
+  transform-origin: center;
+}
+
+.menuToggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.menuToggle.open span:nth-child(2) { opacity: 0; }
+.menuToggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* Mobile Full-Screen Menu */
+.mobileMenu {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: var(--black);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1.5rem, 5vw, 5rem);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-1rem);
+  transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+}
+
+.mobileMenu.mobileMenuOpen {
+  pointer-events: all;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.mobileLink {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 10vw, 6rem);
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--white);
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  transition: color 0.2s, transform 0.3s var(--ease-out);
+  transform: translateX(-1rem);
+  opacity: 0;
+  /* Comfortable tap area */
+  padding: 0.35rem 0;
+}
+
+.mobileMenu.mobileMenuOpen .mobileLink {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.mobileLink:hover { color: var(--accent); }
+
+.mobileLinkNum {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
   color: var(--muted);
   letter-spacing: 0.1em;
 }
 
-.menuLinkText {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 12vw, 5rem);
-  font-weight: 400;
-  color: var(--white);
-  line-height: 1.1;
-}
-
-.menuFooter {
+.mobileFooter {
+  position: absolute;
+  bottom: clamp(1.5rem, 5vw, 3rem);
+  left: clamp(1.5rem, 5vw, 5rem);
+  right: clamp(1.5rem, 5vw, 5rem);
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding-bottom: 2rem;
-  border-top: 1px solid var(--border);
-  padding-top: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
 }
 
-.menuLabel {
+.t_label {
   font-family: var(--font-body);
-  font-size: 0.625rem;
-  text-transform: uppercase;
+  font-size: 0.6875rem;
+  font-weight: 500;
   letter-spacing: 0.2em;
+  text-transform: uppercase;
   color: var(--muted);
 }
 
-.menuEmail {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  color: var(--white);
+/* Responsive */
+@media (max-width: 1024px) {
+  .desktopLinks, .cta { display: none; }
+  .menuToggle { display: flex; }
 }
 
-/* ── Responsive ──────────────────────────────────────────────────────────── */
-@media (max-width: 900px) {
-  .desktopLinks { display: none; }
-  .toggle       { display: flex; }
-}
-
-@media (max-width: 480px) {
-  .inner        { padding: 0 1.25rem; }
-  .menu         { padding: 7rem 1.25rem 2rem; }
+/* Very narrow — tighten mobile menu font */
+@media (max-width: 380px) {
+  .mobileLink { font-size: clamp(2rem, 10vw, 3rem); gap: 0.5rem; }
 }

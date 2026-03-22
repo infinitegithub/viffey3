@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <!-- 
+    Viffey Logo - Dark Version
+    Font: Inter (Simulated via system sans-serif fallback if Inter isn't installed locally)
+    Weight: Bold
+    Tracking: Tight
+  -->
+  <style>
+    .logo-text {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 700;
+      font-size: 32px;
+      letter-spacing: -0.05em;
+      fill: #0D0D12;
+    }
+    .logo-dot {
+      fill: #C9A84C;
+    }
+  </style>
+  <text x="10" y="40" class="logo-text">
+    viffey<tspan class="logo-dot">.</tspan>
+  </text>
+</svg>

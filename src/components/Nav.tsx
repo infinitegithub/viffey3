@@ -1,93 +1,100 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import styles from './Nav.module.css';
 
-const LINKS = [
-  { label: 'Work', href: '#work' },
+const links = [
+  { label: 'Work',     href: '#work'     },
   { label: 'Services', href: '#services' },
-  { label: 'Manifesto', href: '#manifesto' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'About',    href: '#about'    },
+  { label: 'Contact',  href: '#contact'  },
 ];
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 40);
-    };
-    window.addEventListener('scroll', onScroll);
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Lock scroll when menu open
   useEffect(() => {
-    if (menuOpen) document.body.style.overflow = 'hidden';
-    else document.body.style.overflow = '';
+    document.body.classList.toggle('menu-open', menuOpen);
   }, [menuOpen]);
 
+  const closeMenu = () => setMenuOpen(false);
+
   return (
-    <header className={`${styles.nav} ${scrolled ? styles.scrolled : ''} ${menuOpen ? styles.open : ''}`}>
-      <div className={styles.inner}>
+    <>
+      <nav ref={navRef} className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
+        <div className={styles.inner}>
+          <Link href="/" className={styles.logo} onClick={closeMenu}>
+            <Image
+              src="/viffey-logo.svg"
+              alt="Viffey Logo"
+              width={100}
+              height={30}
+              className={styles.logoLight}
+              priority
+            />
+            <Image
+              src="/viffey-logo-dark.svg"
+              alt="Viffey Logo"
+              width={100}
+              height={30}
+              className={styles.logoDark}
+              priority
+            />
+          </Link>
 
-        {/* Logo */}
-        <a href="#" className={styles.logo} onClick={() => setMenuOpen(false)}>
-          <span className={styles.logoText}>VIFFEY</span>
-        </a>
-
-        {/* Desktop links */}
-        <nav className={styles.desktopLinks}>
-          <div className={styles.linkGrid}>
-            {LINKS.map(l => (
-              <a key={l.label} href={l.href} className={styles.link}>
-                <span className={styles.linkInner}>{l.label}</span>
+          <div className={styles.desktopLinks}>
+            {links.map((l, i) => (
+              <a key={l.href} href={l.href} className={styles.navLink}>
+                <span className={styles.linkNum}>0{i + 1}</span>
+                {l.label}
               </a>
             ))}
           </div>
+
           <a href="#contact" className={styles.cta}>
-            <span className={styles.ctaText}>Get in touch</span>
+            Start a project
           </a>
+
+          <button
+            className={`${styles.menuToggle} ${menuOpen ? styles.open : ''}`}
+            onClick={() => setMenuOpen(v => !v)}
+            aria-label="Toggle menu"
+          >
+            <span /><span /><span />
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Full-Screen Menu */}
+      <div className={`${styles.mobileMenu} ${menuOpen ? styles.mobileMenuOpen : ''}`}>
+        <nav className={styles.mobileNav}>
+          {links.map((l, i) => (
+            <a
+              key={l.href}
+              href={l.href}
+              className={styles.mobileLink}
+              onClick={closeMenu}
+              style={{ transitionDelay: `${0.05 * i}s` }}
+            >
+              <span className={styles.mobileLinkNum}>0{i + 1} —</span>
+              {l.label}
+            </a>
+          ))}
         </nav>
-
-        {/* Mobile toggle */}
-        <button
-          className={styles.toggle}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          <div className={styles.toggleLines}>
-            <div className={styles.line} />
-            <div className={styles.line} />
-          </div>
-        </button>
-
-      </div>
-
-      {/* Mobile Menu Backdrop */}
-      <div className={styles.menu}>
-        <div className={styles.menuInner}>
-          <div className={styles.menuLinks}>
-            {LINKS.map((l, i) => (
-              <a
-                key={l.label}
-                href={l.href}
-                className={styles.menuLink}
-                onClick={() => setMenuOpen(false)}
-                style={{ animationDelay: `${0.1 + i * 0.08}s` }}
-              >
-                <span className={styles.menuLinkNum}>0{i + 1}</span>
-                <span className={styles.menuLinkText}>{l.label}</span>
-              </a>
-            ))}
-          </div>
-          <div className={styles.menuFooter}>
-            <span className={styles.menuLabel}>Email us</span>
-            <a href="mailto:hello@viffey.com" className={styles.menuEmail}>hello@viffey.com</a>
-          </div>
+        <div className={styles.mobileFooter}>
+          <span className={styles.t_label}>Available for projects in 2025</span>
         </div>
       </div>
-    </header>
+    </>
   );
 }
