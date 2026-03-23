@@ -130,7 +130,7 @@
 /* ── Link grid ───────────────────────────────────────────────────────────── */
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 2fr;
+  grid-template-columns: 1fr 1fr 2fr;
   gap: clamp(2rem, 4vw, 4rem);
   align-items: start;
   padding-bottom: clamp(3rem, 6vh, 5rem);
@@ -189,19 +189,16 @@
   justify-content: flex-end;
 }
 
-.wordmark {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(3rem, 7vw, 8rem);
-  line-height: 1;
-  color: rgba(240, 237, 232, 0.08);
-  letter-spacing: -0.04em;
+.wordmarkImage {
+  display: block;
+  width: clamp(200px, 35vw, 400px);
+  height: auto;
+  opacity: 0.08;
   user-select: none;
-  transition: color 0.5s;
-  text-align: right;
+  transition: opacity 0.5s;
 }
 
-.wordmark:hover { color: rgba(240, 237, 232, 0.15); }
+.wordmarkImage:hover { opacity: 0.15; }
 
 /* ── Bottom bar ──────────────────────────────────────────────────────────── */
 .bottom {
@@ -225,7 +222,7 @@
 /* ── Responsive ──────────────────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .grid {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   /* Wordmark wraps to its own row spanning all cols */
@@ -236,10 +233,9 @@
     padding-top: 2rem;
   }
 
-  .wordmark {
-    font-size: clamp(3rem, 10vw, 7rem);
-    text-align: left;
-    color: rgba(240, 237, 232, 0.06);
+  .wordmarkImage {
+    width: clamp(200px, 40vw, 300px);
+    opacity: 0.06;
   }
 }
 
@@ -274,10 +270,7 @@
     gap: 2rem;
   }
 
-  /* Nav + social each take one col, Location spans full */
-  .gridCol:nth-child(3) {
-    grid-column: 1 / -1;
-  }
+  /* Nav + social each take one col */
 
   .ctaRight {
     flex-direction: column;

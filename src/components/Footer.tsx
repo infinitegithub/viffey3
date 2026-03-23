@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
+import Image from 'next/image';
 import styles from './Footer.module.css';
 
 const NAV_LINKS = [
@@ -74,17 +75,16 @@ export default function Footer() {
           </nav>
         </div>
 
-        <div className={styles.gridCol}>
-          <span className={styles.colLabel}>Location</span>
-          <p className={styles.colText}>
-            Global Studio<br />
-            Working remotely<br />
-            across all time zones
-          </p>
-        </div>
+
 
         <div className={`${styles.gridCol} ${styles.gridColBrand}`}>
-          <span className={styles.wordmark}>VIFFEY</span>
+          <Image 
+            src="/viffey-logo.svg" 
+            alt="Viffey Logo" 
+            width={400} 
+            height={120} 
+            className={styles.wordmarkImage} 
+          />
         </div>
       </div>
 
