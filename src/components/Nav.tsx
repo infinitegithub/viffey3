@@ -39,15 +39,7 @@ export default function Nav() {
               alt="Viffey Logo"
               width={100}
               height={30}
-              className={styles.logoLight}
-              priority
-            />
-            <Image
-              src="/viffey-logo-dark.svg"
-              alt="Viffey Logo"
-              width={100}
-              height={30}
-              className={styles.logoDark}
+              className={styles.logoImage}
               priority
             />
           </Link>

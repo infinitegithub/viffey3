@@ -29,22 +29,13 @@
 /* Logo */
 .logo { display: flex; align-items: center; }
 
-.logoLight {
+.logoImage {
   display: block;
   height: 28px;
   width: auto;
 }
 
-.logoDark {
-  display: none;
-  height: 28px;
-  width: auto;
-}
-
-@media (prefers-color-scheme: light) {
-  .logoLight { display: none; }
-  .logoDark { display: block; }
-}
+/* Removed prefers-color-scheme media query because the site uses a hardcoded dark background */
 
 /* Desktop links */
 .desktopLinks {
