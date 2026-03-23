@@ -1,7 +1,6 @@
 'use client';
 
 import { useRef } from 'react';
-import Image from 'next/image';
 import styles from './Footer.module.css';
 
 const NAV_LINKS = [
@@ -77,15 +76,7 @@ export default function Footer() {
 
 
 
-        <div className={`${styles.gridCol} ${styles.gridColBrand}`}>
-          <Image 
-            src="/viffey-logo.svg" 
-            alt="Viffey Logo" 
-            width={400} 
-            height={120} 
-            className={styles.wordmarkImage} 
-          />
-        </div>
+
       </div>
 
       {/* ── Bottom bar ──────────────────────────────── */}
