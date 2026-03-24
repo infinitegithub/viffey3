@@ -13,8 +13,6 @@ const NAV_LINKS = [
 const SOCIAL_LINKS = [
   { label: 'Twitter', href: 'https://twitter.com', ext: true },
   { label: 'LinkedIn', href: 'https://linkedin.com', ext: true },
-  { label: 'Dribbble', href: 'https://dribbble.com', ext: true },
-  { label: 'GitHub', href: 'https://github.com', ext: true },
 ];
 
 export default function Footer() {

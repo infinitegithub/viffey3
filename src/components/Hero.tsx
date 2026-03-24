@@ -12,13 +12,12 @@ export default function Hero() {
   const line4Ref   = useRef<HTMLDivElement>(null);
   const subRef     = useRef<HTMLDivElement>(null);
   const scrollRef  = useRef<HTMLDivElement>(null);
-  const numRef     = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
 
-      tl.set([line1Ref.current, line2Ref.current, line3Ref.current, line4Ref.current, subRef.current, scrollRef.current, numRef.current], {
+      tl.set([line1Ref.current, line2Ref.current, line3Ref.current, line4Ref.current, subRef.current, scrollRef.current], {
         opacity: 0,
         yPercent: 100,
       });
@@ -28,7 +27,6 @@ export default function Hero() {
         .to(line3Ref.current, { yPercent: 0, opacity: 1, duration: 1.2 }, 0.70)
         .to(line4Ref.current, { yPercent: 0, opacity: 1, duration: 1.2 }, 0.85)
         .to(subRef.current,   { yPercent: 0, opacity: 1, duration: 0.9 }, 1.1)
-        .to(numRef.current,   { yPercent: 0, opacity: 1, duration: 0.8 }, 1.2)
         .to(scrollRef.current,{ yPercent: 0, opacity: 1, duration: 0.8 }, 1.3);
     }, sectionRef);
 
@@ -39,10 +37,7 @@ export default function Hero() {
     <section ref={sectionRef} className={styles.hero} id="home">
       <div className={styles.inner}>
 
-        {/* Margin number — top left */}
-        <div className={styles.marginNum} ref={numRef}>
-          <span>§ 001</span>
-        </div>
+
 
         {/* Main headline — four lines to match your local vision */}
         <div className={styles.headlines}>

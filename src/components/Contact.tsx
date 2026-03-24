@@ -16,22 +16,6 @@ try {
 
 type Status = 'idle' | 'sending' | 'success' | 'error';
 
-const SERVICES = [
-  'Web Design & Development',
-  'Brand Identity',
-  'Digital Strategy',
-  'Full-Service Project',
-  'Other',
-];
-
-const BUDGETS = [
-  '< €5,000',
-  '€5,000 – €15,000',
-  '€15,000 – €40,000',
-  '€40,000+',
-  'Not sure yet',
-];
-
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
   const headRef = useRef<HTMLHeadingElement>(null);
@@ -40,9 +24,7 @@ export default function Contact() {
   const [form, setForm] = useState({
     name: '',
     email: '',
-    company: '',
-    service: '',
-    budget: '',
+    phone: '',
     message: '',
   });
 
@@ -116,7 +98,7 @@ export default function Contact() {
       }
 
       setStatus('success');
-      setForm({ name: '', email: '', company: '', service: '', budget: '', message: '' });
+      setForm({ name: '', email: '', phone: '', message: '' });
       setTouched({});
     } catch {
       setStatus('error');
@@ -130,7 +112,7 @@ export default function Contact() {
 
         {/* Header row */}
         <div className={styles.headerRow}>
-          <span className={styles.label}>05 — Contact</span>
+          <span className={styles.label}>Contact</span>
           <h2 ref={headRef} className={styles.heading}>
             Have something<br />
             <em>worth building?</em>
@@ -204,65 +186,22 @@ export default function Contact() {
                   </div>
                 </div>
 
-                {/* Row 2 — Company */}
+                {/* Row 2 — Phone */}
                 <div className={styles.field}>
-                  <label className={styles.fieldLabel} htmlFor="company">
-                    Company / Organisation
+                  <label className={styles.fieldLabel} htmlFor="phone">
+                    Phone Number
                   </label>
                   <input
-                    id="company"
-                    name="company"
-                    type="text"
-                    autoComplete="organization"
-                    placeholder="Acme Inc."
-                    value={form.company}
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    autoComplete="tel"
+                    placeholder="+1 (555) 000-0000"
+                    value={form.phone}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     className={styles.input}
                   />
-                </div>
-
-                {/* Row 3 — Service + Budget */}
-                <div className={styles.row}>
-                  <div className={styles.field}>
-                    <label className={styles.fieldLabel} htmlFor="service">
-                      Service needed
-                    </label>
-                    <div className={styles.selectWrap}>
-                      <select
-                        id="service"
-                        name="service"
-                        value={form.service}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        className={`${styles.input} ${styles.select}`}
-                      >
-                        <option value="">Select a service…</option>
-                        {SERVICES.map(s => <option key={s} value={s}>{s}</option>)}
-                      </select>
-                      <span className={styles.selectArrow}>↓</span>
-                    </div>
-                  </div>
-
-                  <div className={styles.field}>
-                    <label className={styles.fieldLabel} htmlFor="budget">
-                      Budget range
-                    </label>
-                    <div className={styles.selectWrap}>
-                      <select
-                        id="budget"
-                        name="budget"
-                        value={form.budget}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        className={`${styles.input} ${styles.select}`}
-                      >
-                        <option value="">Select a range…</option>
-                        {BUDGETS.map(b => <option key={b} value={b}>{b}</option>)}
-                      </select>
-                      <span className={styles.selectArrow}>↓</span>
-                    </div>
-                  </div>
                 </div>
 
                 {/* Row 4 — Message */}

@@ -1,104 +1,92 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './Manifesto.module.css';
 
-// Register with try/catch to ensure browser-only exec
-try {
-  gsap.registerPlugin(ScrollTrigger);
-} catch (e) {
-  console.warn('[Manifesto] Plugin error:', e);
-}
-
-const STATS = [
-  { label: 'Founded', value: '2024' },
-  { label: 'Completed projects', value: '40+' },
-  { label: 'Current clients', value: '12' },
-  { label: 'Avg lead time', value: '24h' },
-];
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Manifesto() {
-  const containerRef = useRef<HTMLElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const lines = [
+    'Most agencies chase trends.',
+    'We study what lasts.',
+    'Then we make it move.',
+  ];
 
   useEffect(() => {
-    // Only run if GSAP is available and we're in browser
-    if (typeof window === 'undefined') return;
-
     const ctx = gsap.context(() => {
+      const lineEls = sectionRef.current?.querySelectorAll(`.${styles.manifestoLine}`);
+      lineEls?.forEach((el, i) => {
+        gsap.fromTo(el,
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1, y: 0,
+            duration: 1.1,
+            delay: i * 0.12,
+            ease: 'power4.out',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 85%',
+            },
+          }
+        );
+      });
 
-      // Reveal text
-      gsap.fromTo(textRef.current,
-        { opacity: 0, y: 50 },
+      gsap.fromTo(`.${styles.statsRow}`,
+        { opacity: 0, y: 24 },
         {
-          opacity: 1,
-          y: 0,
-          duration: 1.2,
+          opacity: 1, y: 0,
+          duration: 0.9,
           ease: 'power3.out',
           scrollTrigger: {
-            trigger: containerRef.current,
-            start: 'top 80%',
-          }
-        }
-      );
-
-      // Reveal stats
-      gsap.fromTo(statsRef.current?.children ?? [],
-        { opacity: 0, x: -20 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: statsRef.current,
+            trigger: `.${styles.statsRow}`,
             start: 'top 85%',
-          }
+          },
         }
       );
-
-    }, containerRef);
+    }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={containerRef} className={styles.section} id="manifesto">
+    <section ref={sectionRef} className={styles.section} id="about">
       <div className={styles.inner}>
 
-        <div className={styles.left}>
-          <span className={styles.label}>02 — Manifesto</span>
+        {/* Margin label */}
+        <div className={styles.marginLabel}>
+          <span className={styles.label}>Manifesto</span>
         </div>
 
-        <div className={styles.right}>
-          <div ref={textRef} className={styles.content}>
-            <p className={styles.heroText}>
-              In a digital landscape cluttered with generic solutions, we advocate for
-              <em className={styles.ital}> meticulous intentionality.</em>
-            </p>
-            <p className={styles.bodyText}>
-              Everything we create for our clients is driven by a simple belief:
-              Quality isn't just a goal, but a baseline. By merging minimalist
-              aesthetics with raw technical capabilities, we deliver digital
-              products that don't just solve problems—they define standards.
-            </p>
-          </div>
-
-          {/* Stats grid */}
-          <div ref={statsRef} className={styles.stats}>
-            {STATS.map(s => (
-              <div key={s.label} className={styles.statItem}>
-                <span className={styles.statLabel}>{s.label}</span>
-                <span className={styles.statValue}>{s.value}</span>
-              </div>
-            ))}
-          </div>
+        {/* The manifesto */}
+        <div className={styles.manifestoBlock}>
+          {lines.map((line, i) => (
+            <div key={i} className={styles.lineWrap}>
+              <p
+                className={`${styles.manifestoLine} ${i === 1 ? styles.italic : ''}`}
+              >
+                {line}
+                {i === 2 && <span className={styles.accent}>.</span>}
+              </p>
+            </div>
+          ))}
         </div>
 
+        {/* Stats row */}
+        <div className={styles.statsRow}>
+          {[
+            { num: '7+',  label: 'Years of craft' },
+            { num: '80+', label: 'Projects shipped' },
+            { num: '3',   label: 'Core services' },
+          ].map(s => (
+            <div key={s.label} className={styles.stat}>
+              <span className={styles.statNum}>{s.num}</span>
+              <span className={styles.statLabel}>{s.label}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

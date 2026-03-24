@@ -1,77 +1,106 @@
 'use client';
 
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './Work.module.css';
 
-const PROJECTS = [
+gsap.registerPlugin(ScrollTrigger);
+
+const projects = [
   {
-    num: '01',
-    title: 'Aura Collective',
-    cat: 'Brand Identity',
+    id: '01',
+    title: 'Lumina',
+    category: 'Web Design · Development',
     year: '2024',
-    desc: 'High-end retail direction and digital flagship for a premium furniture brand.',
+    desc: 'Full rebrand and e-commerce build for a luxury skincare brand. 2.4× conversion lift post-launch.',
+    color: '#1A1714',
   },
   {
-    num: '02',
-    title: 'Nexus Data Lab',
-    cat: 'Complex Web App',
+    id: '02',
+    title: 'Forma Studio',
+    category: 'Brand Identity',
     year: '2024',
-    desc: 'Live data visualization engine and dashboard for global logistics tracking.',
+    desc: 'Visual identity system for an architecture studio. Wordmark, type system, and print collateral.',
+    color: '#141718',
   },
   {
-    num: '03',
-    title: 'Studio Kôre',
-    cat: 'Visual Experience',
+    id: '03',
+    title: 'Axis Capital',
+    category: 'Web Design · Strategy',
     year: '2023',
-    desc: 'Hyper-minimal portfolio for an architecture studio in Kyoto.',
+    desc: 'Digital presence for a private equity firm. Positioning, copy, and a site that commands respect.',
+    color: '#181614',
   },
   {
-    num: '04',
-    title: 'Velvet Horizon',
-    cat: 'E-commerce',
+    id: '04',
+    title: 'Noor Health',
+    category: 'Web Design · Branding',
     year: '2023',
-    desc: 'Next-gen shopping experience for a luxury fragrance house.',
+    desc: 'End-to-end brand and product website for a digital health startup. Series A accelerant.',
+    color: '#141616',
   },
 ];
 
 export default function Work() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const items = sectionRef.current?.querySelectorAll(`.${styles.item}`);
+      items?.forEach((item) => {
+        gsap.fromTo(item,
+          { opacity: 0, y: 48 },
+          {
+            opacity: 1, y: 0,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: item,
+              start: 'top 88%',
+            },
+          }
+        );
+      });
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className={styles.section} id="work">
+    <section ref={sectionRef} className={styles.section} id="work">
       <div className={styles.header}>
-        <span className={styles.label}>04 — SELECTED WORK</span>
+        <span className={styles.label}>Selected Work</span>
         <h2 className={styles.heading}>
-          Crafting digital<br />
-          <em>masterpieces.</em>
+          Recent<br /><em>projects</em>
         </h2>
       </div>
 
       <div className={styles.list}>
-        {PROJECTS.map(p => (
-          <div key={p.num} className={styles.item}>
+        {projects.map((p) => (
+          <article key={p.title} className={styles.item} data-cursor>
             <div className={styles.itemInner}>
               <div className={styles.itemLeft}>
-                <span className={styles.itemNum}>{p.num}</span>
                 <h3 className={styles.itemTitle}>{p.title}</h3>
               </div>
 
               <div className={styles.itemMeta}>
-                <span className={styles.itemCategory}>{p.cat}</span>
+                <span className={styles.itemCategory}>{p.category}</span>
                 <span className={styles.itemYear}>{p.year}</span>
               </div>
 
-              <div className={styles.itemDesc}>
-                {p.desc}
-              </div>
+              <p className={styles.itemDesc}>{p.desc}</p>
 
               <div className={styles.itemArrow}>→</div>
             </div>
+
+            {/* Accent line */}
             <div className={styles.itemLine} />
-          </div>
+          </article>
         ))}
       </div>
 
       <div className={styles.footer}>
-        {/* Placeholder for "View All" if needed */}
+        <span className={styles.label}>All work available upon request</span>
       </div>
     </section>
   );

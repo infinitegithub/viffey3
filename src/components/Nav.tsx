@@ -47,7 +47,6 @@ export default function Nav() {
           <div className={styles.desktopLinks}>
             {links.map((l, i) => (
               <a key={l.href} href={l.href} className={styles.navLink}>
-                <span className={styles.linkNum}>0{i + 1}</span>
                 {l.label}
               </a>
             ))}
@@ -78,7 +77,6 @@ export default function Nav() {
               onClick={closeMenu}
               style={{ transitionDelay: `${0.05 * i}s` }}
             >
-              <span className={styles.mobileLinkNum}>0{i + 1} —</span>
               {l.label}
             </a>
           ))}

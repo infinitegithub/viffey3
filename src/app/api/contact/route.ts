@@ -4,9 +4,7 @@ import { NextRequest, NextResponse } from 'next/server';
 interface ContactPayload {
   name: string;
   email: string;
-  company?: string;
-  service?: string;
-  budget?: string;
+  phone?: string;
   message: string;
 }
 
@@ -34,9 +32,7 @@ export async function POST(req: NextRequest) {
   console.log('[Contact] New submission:', {
     name: data.name,
     email: data.email,
-    company: data.company,
-    service: data.service,
-    budget: data.budget,
+    phone: data.phone,
     submittedAt: new Date().toISOString(),
   });
 
