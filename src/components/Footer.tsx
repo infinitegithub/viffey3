@@ -4,10 +4,11 @@ import { useRef } from 'react';
 import styles from './Footer.module.css';
 
 const NAV_LINKS = [
-  { label: 'Work', href: '#work' },
-  { label: 'Services', href: '#services' },
-  { label: 'Manifesto', href: '#manifesto' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Work',      href: '/#work' },
+  { label: 'Services',  href: '/services' },
+  { label: 'Manifesto', href: '/manifesto' },
+  { label: 'About',     href: '/about' },
+  { label: 'Contact',   href: '/#contact' },
 ];
 
 const SOCIAL_LINKS = [

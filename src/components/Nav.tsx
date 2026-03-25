@@ -6,10 +6,11 @@ import Image from 'next/image';
 import styles from './Nav.module.css';
 
 const links = [
-  { label: 'Work',     href: '#work'     },
-  { label: 'Services', href: '#services' },
-  { label: 'About',    href: '#about'    },
-  { label: 'Contact',  href: '#contact'  },
+  { label: 'Work',      href: '/#work'     },
+  { label: 'Services',  href: '/services'  },
+  { label: 'Manifesto', href: '/manifesto' },
+  { label: 'About',     href: '/about'     },
+  { label: 'Contact',   href: '/#contact'  },
 ];
 
 export default function Nav() {
@@ -82,7 +83,7 @@ export default function Nav() {
           ))}
         </nav>
         <div className={styles.mobileFooter}>
-          <span className={styles.t_label}>Available for projects in 2025</span>
+          <span className={styles.t_label}>Available for projects</span>
         </div>
       </div>
     </>
