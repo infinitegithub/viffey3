@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
+import Spline from '@splinetool/react-spline';
 import styles from './Footer.module.css';
 
 const NAV_LINKS = [
@@ -13,6 +14,8 @@ const NAV_LINKS = [
 const SOCIAL_LINKS = [
   { label: 'Twitter', href: 'https://twitter.com', ext: true },
   { label: 'LinkedIn', href: 'https://linkedin.com', ext: true },
+  { label: 'Instagram', href: 'https://instagram.com', ext: true },
+  { label: 'TikTok', href: 'https://tiktok.com', ext: true },
 ];
 
 export default function Footer() {
@@ -35,8 +38,8 @@ export default function Footer() {
             Start a project
             <span className={styles.ctaBtnArrow}>→</span>
           </a>
-          <a href="mailto:hello@viffey.com" className={styles.ctaEmail}>
-            {process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'hello@viffey.com'}
+          <a href="mailto:contact@viffey.com" className={styles.ctaEmail}>
+            {process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'contact@viffey.com'}
           </a>
         </div>
       </div>
@@ -53,6 +56,11 @@ export default function Footer() {
               <a key={l.label} href={l.href} className={styles.colLink}>{l.label}</a>
             ))}
           </nav>
+        </div>
+
+        {/* ── Spline Animation ── */}
+        <div className={styles.splineContainer}>
+          <Spline scene="https://prod.spline.design/8GtoHNcIhG5iZ-ez/scene.splinecode" />
         </div>
 
         <div className={styles.gridCol}>

@@ -250,8 +250,8 @@ export default function Contact() {
           <aside className={styles.infoCol}>
             <div className={styles.infoEmail}>
               <span className={styles.infoLabel}>Email us directly</span>
-              <a href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'hello@viffey.com'}`} className={styles.email}>
-                {process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'hello@viffey.com'}
+              <a href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'contact@viffey.com'}`} className={styles.email}>
+                {process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'contact@viffey.com'}
               </a>
             </div>
 
