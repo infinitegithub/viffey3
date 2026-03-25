@@ -141,20 +141,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  flex: 1 1 150px;
 }
-
-.splineContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 0 1 300px; /* Constrain max size while ensuring it shrinks if necessary */
-  height: clamp(100px, 20vw, 200px); /* Limit cercles size */
-  max-width: 300px;
-  overflow: visible;
-  margin: 0 auto;
-}
-
 
 .colLabel {
   font-family: var(--font-body);
@@ -255,11 +242,6 @@
   .ctaBtn {
     width: 100%;
     justify-content: space-between;
-  }
-
-  .splineContainer {
-    width: 100%;
-    margin: 1.5rem 0;
   }
 
   .bottom {

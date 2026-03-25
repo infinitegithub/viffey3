@@ -1,7 +1,6 @@
 'use client';
 
 import { useRef } from 'react';
-import Spline from '@splinetool/react-spline';
 import styles from './Footer.module.css';
 
 const NAV_LINKS = [
@@ -56,11 +55,6 @@ export default function Footer() {
               <a key={l.label} href={l.href} className={styles.colLink}>{l.label}</a>
             ))}
           </nav>
-        </div>
-
-        {/* ── Spline Animation ── */}
-        <div className={styles.splineContainer}>
-          <Spline scene="https://prod.spline.design/8GtoHNcIhG5iZ-ez/scene.splinecode" />
         </div>
 
         <div className={styles.gridCol}>

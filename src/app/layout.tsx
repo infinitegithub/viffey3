@@ -20,12 +20,26 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: 'Viffey — Digital Agency',
-  description: 'We design and build digital experiences that move. Web, Branding, Strategy.',
+  metadataBase: new URL('https://viffey.com'),
+  title: 'Viffey — Leading Digital Agency in Morocco',
+  description: 'Viffey is a premium digital agency in Morocco specializing in web design, branding, and development. We build extraordinary experiences that move.',
+  keywords: ['Digital Agency Morocco', 'Web Design Morocco', 'Creative Agency Casablanca', 'Brand Strategy', 'Web Development', 'Viffey', 'SEO Morocco', 'Premium Design Agency'],
   openGraph: {
-    title: 'Viffey — Digital Agency',
-    description: 'We design and build digital experiences that move.',
+    title: 'Viffey — Premium Digital Agency in Morocco',
+    description: 'We design and build digital experiences that move. Specializing in Web, Branding, and Strategy.',
+    url: 'https://viffey.com',
+    siteName: 'Viffey',
+    locale: 'en_MA',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Viffey — Premium Digital Agency in Morocco',
+    description: 'We design and build digital experiences that move.',
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

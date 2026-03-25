@@ -257,9 +257,7 @@ export default function Contact() {
 
             <div className={styles.infoBlocks}>
               {[
-                { label: 'Based in', value: 'Remote — Worldwide' },
                 { label: 'Response time', value: 'Within 24 hours' },
-                { label: 'Availability', value: 'Q2 2025 — Open' },
               ].map(b => (
                 <div key={b.label} className={styles.infoBlock}>
                   <span className={styles.infoLabel}>{b.label}</span>
