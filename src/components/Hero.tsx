@@ -39,28 +39,28 @@ export default function Hero() {
 
 
 
-        {/* Main headline — four lines to match your local vision */}
+        {/* Main headline — cleanly aligned */}
         <div className={styles.headlines}>
           <div className={styles.lineWrap}>
-            <div ref={line1Ref} className={`${styles.line} ${styles.lineLeft}`}>
+            <div ref={line1Ref} className={styles.line}>
               <span className={styles.displayText}>WE BRING</span>
             </div>
           </div>
 
           <div className={styles.lineWrap}>
-            <div ref={line2Ref} className={`${styles.line} ${styles.lineRight}`}>
+            <div ref={line2Ref} className={styles.line}>
               <span className={`${styles.displayText} ${styles.italic}`}>IDEAS</span>
             </div>
           </div>
 
           <div className={styles.lineWrap}>
-            <div ref={line3Ref} className={`${styles.line} ${styles.lineLeft}`}>
+            <div ref={line3Ref} className={styles.line}>
               <span className={styles.displayText}>TO</span>
             </div>
           </div>
 
           <div className={styles.lineWrap}>
-            <div ref={line4Ref} className={`${styles.line} ${styles.lineRight}`}>
+            <div ref={line4Ref} className={styles.line}>
               <span className={styles.displayText}>
                 LIFE
                 <span className={styles.accentDot}>.</span>
