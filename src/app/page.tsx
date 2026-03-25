@@ -14,7 +14,7 @@ export default function Home() {
       <Marquee />
       <Services />
       <Work />
-      <Contact />
+      <Contact hideQA={true} />
       <Footer />
     </main>
   );

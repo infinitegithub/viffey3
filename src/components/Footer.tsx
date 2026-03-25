@@ -7,7 +7,7 @@ const NAV_LINKS = [
   { label: 'Work', href: '/#work' },
   { label: 'Services', href: '/services' },
   { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/#contact' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 const SOCIAL_LINKS = [
@@ -33,7 +33,7 @@ export default function Footer() {
           </h2>
         </div>
         <div className={styles.ctaRight}>
-          <a href="#contact" className={styles.ctaBtn}>
+          <a href="/contact" className={styles.ctaBtn}>
             <span className={styles.ctaBtnText}>Start a project</span>
             <span className={styles.ctaBtnArrow}>→</span>
           </a>

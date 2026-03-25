@@ -9,7 +9,7 @@ const links = [
   { label: 'Work', href: '/#work' },
   { label: 'Services', href: '/services' },
   { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/#contact' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 export default function Nav() {
@@ -58,9 +58,9 @@ export default function Nav() {
             ))}
           </div>
 
-          <a href="#contact" className={styles.cta}>
+          <Link href="/contact" className={styles.cta}>
             Start a project
-          </a>
+          </Link>
 
           <button
             className={`${styles.menuToggle} ${menuOpen ? styles.open : ''}`}
