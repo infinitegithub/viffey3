@@ -114,8 +114,8 @@ export default function Contact({ hideQA = false }: { hideQA?: boolean }) {
         <div className={styles.headerRow}>
           <span className={styles.label}>Contact</span>
           <h2 ref={headRef} className={styles.heading}>
-            Have something<br />
-            <em>worth building?</em>
+            Ready to outpace<br />
+            <em>the competition?</em>
           </h2>
         </div>
 
