@@ -15,15 +15,15 @@ export default function ServicesPage() {
       <div className={styles.page}>
          <div className={styles.hero}>
            <h1 className={styles.title}>
-             We don't do templates.<br />
-             <em>We engineer unfair advantages.</em>
+             Custom engineering.<br />
+             <em>Measurable results.</em>
            </h1>
            <div className={styles.intro}>
              <p>
-               In a sea of sluggish, bloated WordPress themes and cookie-cutter page builders, passing the baseline is no longer enough.
+               Many businesses struggle with the performance limitations of rigid WordPress themes and cookie-cutter page builders.
              </p>
              <p>
-               At Viffey, we build <span className={styles.highlight}>bespoke, lightning-fast digital architectures</span> using modern technology (Next.js & React) designed from the ground up to rank higher on Google, convert better, and leave your competitors wondering how you do it.
+               At Viffey, we build <span className={styles.highlight}>bespoke, lightning-fast digital architectures</span> using modern technology (Next.js & React) designed from the ground up to rank higher on Google, convert better, and help your business scale efficiently.
              </p>
            </div>
          </div>
@@ -82,7 +82,7 @@ export default function ServicesPage() {
            <div className={styles.manifestoBlock}>
              <h2 className={styles.manifestoTitle}>The Viffey Standard</h2>
              <p className={styles.manifestoText}>
-               A website is not a brochure. It is a 24/7 sales engine. If your site takes more than 2 seconds to load, you are losing money to a competitor. That's why we abandon obsolete CMS platforms and engineer exclusively in the modern web's most performant frameworks.
+               A website is not a brochure. It is a 24/7 sales engine. If your site takes more than 2 seconds to load, you risk losing potential clients. That's why we choose modern, performant frameworks over legacy CMS platforms, ensuring your foundation is built for speed and sustainable growth.
              </p>
            </div>
          </div>
