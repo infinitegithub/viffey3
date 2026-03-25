@@ -57,20 +57,24 @@ export async function POST(req: NextRequest) {
       const errorText = await espoRes.text();
       console.error('[Contact] EspoCRM LeadCapture Error:', espoRes.status, errorText);
 
-      // Try to parse specific validation errors from EspoCRM to show the user
+      // Parse EspoCRM errors into polite, customer-facing messages
       try {
         const errObj = JSON.parse(errorText);
-        let errorReason = 'CRM rejected the submission.';
         if (errObj?.messageTranslation?.label === 'validationFailure') {
-            errorReason = `CRM Validation Failed (Field: ${errObj.messageTranslation.data?.field || 'unknown'})`;
-        } else if (errorText.includes('duplicate')) {
-            errorReason = 'CRM detected a duplicate entry.';
+            return NextResponse.json({ success: false, error: 'Please ensure your email and phone number are formatted correctly.' }, { status: 400 });
         }
-        return NextResponse.json({ success: false, error: errorReason }, { status: 400 });
       } catch (e) {
-        // Fallback to sending a sanitized portion of the raw error for debugging
-        return NextResponse.json({ success: false, error: `CRM Error: ${espoRes.status} - ${errorText.substring(0, 100)}` }, { status: 500 });
+        // Ignore JSON parse errors
       }
+
+      // Handle duplicate entries gracefully (pretend it succeeded so genuine users don't worry, 
+      // or provide a polite message)
+      if (errorText.toLowerCase().includes('duplicate') || espoRes.status === 409) {
+         return NextResponse.json({ success: true, message: "We already have your inquiry! Our team will be in touch shortly." });
+      }
+
+      // Generic fallback for any other CRM downtime/errors
+      return NextResponse.json({ success: false, error: 'We are currently experiencing high traffic. Please email us directly.' }, { status: 500 });
     }
 
     // Success
