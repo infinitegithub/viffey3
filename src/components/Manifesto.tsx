@@ -60,32 +60,34 @@ export default function Manifesto() {
           <span className={styles.label}>Manifesto</span>
         </div>
 
-        {/* The manifesto */}
-        <div className={styles.manifestoBlock}>
-          {lines.map((line, i) => (
-            <div key={i} className={styles.lineWrap}>
-              <p
-                className={`${styles.manifestoLine} ${i === 1 ? styles.italic : ''}`}
-              >
-                {line}
-                {i === 2 && <span className={styles.accent}>.</span>}
-              </p>
-            </div>
-          ))}
-        </div>
+        <div className={styles.right}>
+          {/* The manifesto */}
+          <div className={styles.manifestoBlock}>
+            {lines.map((line, i) => (
+              <div key={i} className={styles.lineWrap}>
+                <p
+                  className={`${styles.manifestoLine} ${i === 1 ? styles.italic : ''}`}
+                >
+                  {line}
+                  {i === 2 && <span className={styles.accent}>.</span>}
+                </p>
+              </div>
+            ))}
+          </div>
 
-        {/* Stats row */}
-        <div className={styles.statsRow}>
-          {[
-            { num: '7+',  label: 'Years of craft' },
-            { num: '80+', label: 'Projects shipped' },
-            { num: '3',   label: 'Core services' },
-          ].map(s => (
-            <div key={s.label} className={styles.stat}>
-              <span className={styles.statNum}>{s.num}</span>
-              <span className={styles.statLabel}>{s.label}</span>
-            </div>
-          ))}
+          {/* Stats row */}
+          <div className={styles.statsRow}>
+            {[
+              { num: '7+',  label: 'Years of craft' },
+              { num: '80+', label: 'Projects shipped' },
+              { num: '3',   label: 'Core services' },
+            ].map(s => (
+              <div key={s.label} className={styles.stat}>
+                <span className={styles.statNum}>{s.num}</span>
+                <span className={styles.statLabel}>{s.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
