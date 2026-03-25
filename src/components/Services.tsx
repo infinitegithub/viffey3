@@ -10,21 +10,21 @@ gsap.registerPlugin(ScrollTrigger);
 const services = [
   {
     num: '01',
-    title: 'Web Design\n& Development',
-    desc: 'Interfaces built to perform — from architecture to pixel. We engineer experiences that convert visitors into believers.',
-    tags: ['Next.js', 'React', 'Motion', 'CMS'],
+    title: 'Online\nPresence',
+    desc: 'Whether it is a high-converting landing page, a full-fledged store, or whatever your idea is, we can help bring it to life.',
+    tags: ['Landing Pages', 'E-Commerce', 'Custom Dev'],
   },
   {
     num: '02',
-    title: 'Brand\nIdentity',
-    desc: 'Visual systems with a point of view. Logos, typography, color — every mark made to distinguish, not decorate.',
-    tags: ['Identity', 'Typography', 'Guidelines'],
+    title: 'Hosting\n& Setup',
+    desc: 'We handle the technical heavy lifting. We can host your platform remotely on our robust infrastructure or help you set it up locally.',
+    tags: ['Cloud Hosting', 'Local Setup', 'Deployment'],
   },
   {
     num: '03',
-    title: 'Digital\nStrategy',
-    desc: 'We ask the hard questions before we write a line of code. Product thinking, market positioning, and roadmaps that hold.',
-    tags: ['Positioning', 'Roadmap', 'UX Research'],
+    title: 'Automations\n& AI',
+    desc: 'Enhance your business with cutting-edge AI and automations. We build custom solutions, automated workflows, and even specialized trading bots.',
+    tags: ['AI Integrations', 'Bots', 'Trading Algorithms'],
   },
 ];
 

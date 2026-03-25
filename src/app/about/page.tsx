@@ -17,10 +17,10 @@ export default function AboutPage() {
          </h1>
          <div style={{ fontFamily: 'var(--font-body)', fontSize: '1.05rem', color: 'rgba(240, 237, 232, 0.6)', lineHeight: 1.8, maxWidth: '800px', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <p>
-                [Your expanded About Us story goes here, this is a dedicated placeholder. You can describe your origin story, your core team, and your broader strategy.]
+                We specialize in helping businesses like yours succeed online. From website design and development to digital marketing and advertising, we have the tools and expertise to elevate your online presence. Let us help you navigate the evolving world of digital to drive growth and reach your goals.
             </p>
             <p>
-                [This page inherits the exact premium noise profiles, fonts, cursor, and global styles as the front page. Simply edit this file explicitly in src/app/about/page.tsx to build out the Viffey story.]
+                All this comes at little cost to your wallet, and you can reach out for inquiries completely for free.
             </p>
          </div>
       </div>

@@ -6,7 +6,6 @@ import styles from './Footer.module.css';
 const NAV_LINKS = [
   { label: 'Work',      href: '/#work' },
   { label: 'Services',  href: '/services' },
-  { label: 'Manifesto', href: '/manifesto' },
   { label: 'About',     href: '/about' },
   { label: 'Contact',   href: '/#contact' },
 ];
@@ -35,7 +34,7 @@ export default function Footer() {
         </div>
         <div className={styles.ctaRight}>
           <a href="#contact" className={styles.ctaBtn}>
-            Start a project
+            <span className={styles.ctaBtnText}>Start a project</span>
             <span className={styles.ctaBtnArrow}>→</span>
           </a>
           <a href="mailto:contact@viffey.com" className={styles.ctaEmail}>

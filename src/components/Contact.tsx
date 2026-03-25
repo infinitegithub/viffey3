@@ -273,6 +273,22 @@ export default function Contact() {
                 We do not sell or share your data.
               </p>
             </div>
+
+            <div className={styles.crmNote} style={{ marginTop: '2.5rem' }}>
+              <span className={styles.infoLabel}>Q&A</span>
+              <p className={styles.crmText} style={{ marginBottom: '1.25rem' }}>
+                <strong style={{ color: 'var(--white)', fontWeight: 500 }}>Do you work with small businesses?</strong><br />
+                Yes, we help businesses of all sizes establish and scale their online presence.
+              </p>
+              <p className={styles.crmText} style={{ marginBottom: '1.25rem' }}>
+                <strong style={{ color: 'var(--white)', fontWeight: 500 }}>How much does a project cost?</strong><br />
+                We offer solutions that come at little cost to your wallet. You can always reach out for a free inquiry!
+              </p>
+              <p className={styles.crmText}>
+                <strong style={{ color: 'var(--white)', fontWeight: 500 }}>Can you build bots or automations?</strong><br />
+                Absolutely. From automated workflows to specialized trading bots, we have the skills and expertise.
+              </p>
+            </div>
           </aside>
         </div>
       </div>

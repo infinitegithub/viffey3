@@ -8,7 +8,6 @@ import styles from './Nav.module.css';
 const links = [
   { label: 'Work',      href: '/#work'     },
   { label: 'Services',  href: '/services'  },
-  { label: 'Manifesto', href: '/manifesto' },
   { label: 'About',     href: '/about'     },
   { label: 'Contact',   href: '/#contact'  },
 ];
@@ -34,7 +33,13 @@ export default function Nav() {
     <>
       <nav ref={navRef} className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
         <div className={styles.inner}>
-          <Link href="/" className={styles.logo} onClick={closeMenu}>
+          <Link href="/" className={styles.logo} onClick={(e) => {
+            closeMenu();
+            if (window.location.pathname === '/') {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          }}>
             <Image
               src="/viffey-logo.svg"
               alt="Viffey Logo"
