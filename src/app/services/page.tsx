@@ -1,9 +1,10 @@
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
+import styles from './ServicesPage.module.css';
 
 export const metadata = {
   title: 'Services — Viffey',
-  description: 'Our 3 core services carefully curated for modern businesses.',
+  description: 'Bespoke Web Design, Custom Architecture, and Technical SEO for brands that refuse to be ordinary.',
 };
 
 export default function ServicesPage() {
@@ -11,28 +12,79 @@ export default function ServicesPage() {
     <main>
       <Nav />
       {/* Page Layout Wrapper */}
-      <div style={{ padding: 'clamp(10rem, 20vh, 15rem) clamp(1.5rem, 5vw, 5rem) clamp(4rem, 10vh, 8rem)', maxWidth: '1440px', margin: '0 auto', minHeight: '65vh' }}>
-         <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(3rem, 5vw, 4.5rem)', color: 'var(--white)', marginBottom: '2rem', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
-             Our Services.
-         </h1>
-         <div style={{ fontFamily: 'var(--font-body)', fontSize: '1.05rem', color: 'rgba(240, 237, 232, 0.6)', lineHeight: 1.8, maxWidth: '800px', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            <p>
-                We offer comprehensive solutions to help you succeed online:
-            </p>
-            <ul style={{ listStyleType: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-              <li>
-                <strong style={{ color: 'var(--white)', display: 'block', fontSize: '1.25rem', marginBottom: '0.5rem' }}>Online Presence</strong>
-                Whether it is a high-converting landing page, a full-fledged store, or whatever your idea is, we can help bring it to life.
-              </li>
-              <li>
-                <strong style={{ color: 'var(--white)', display: 'block', fontSize: '1.25rem', marginBottom: '0.5rem' }}>Hosting & Setup</strong>
-                We handle the technical heavy lifting. We can host your platform remotely on our robust infrastructure or help you set it up locally.
-              </li>
-              <li>
-                <strong style={{ color: 'var(--white)', display: 'block', fontSize: '1.25rem', marginBottom: '0.5rem' }}>Automations & AI</strong>
-                Enhance your business with cutting-edge AI and automations. We build custom solutions, automated workflows, and even specialized trading bots.
-              </li>
-            </ul>
+      <div className={styles.page}>
+         <div className={styles.hero}>
+           <h1 className={styles.title}>
+             We don't do templates.<br />
+             <em>We engineer unfair advantages.</em>
+           </h1>
+           <div className={styles.intro}>
+             <p>
+               In a sea of sluggish, bloated WordPress themes and cookie-cutter page builders, passing the baseline is no longer enough.
+             </p>
+             <p>
+               At Viffey, we build <span className={styles.highlight}>bespoke, lightning-fast digital architectures</span> using modern technology (Next.js & React) designed from the ground up to rank higher on Google, convert better, and leave your competitors wondering how you do it.
+             </p>
+           </div>
+         </div>
+
+         <div className={styles.grid}>
+           {/* Service 1 */}
+           <div className={styles.card}>
+             <div className={styles.cardHeader}>
+               <span className={styles.cardNumber}>01 — ONLINE PRESENCE</span>
+               <h3 className={styles.cardTitle}>Custom Web Development & SEO</h3>
+             </div>
+             <p className={styles.cardDesc}>
+               Whether it's a high-converting landing page or a full-fledged robust storefront, we bring your vision to life. We prioritize technical SEO from day one—meaning your site doesn't just look stunning, it's structured perfectly for search engines to crawl, index, and rank at the top.
+             </p>
+             <div className={styles.techStack}>
+               <span className={styles.tag}>Next.js</span>
+               <span className={styles.tag}>React</span>
+               <span className={styles.tag}>Technical SEO</span>
+               <span className={styles.tag}>Performance</span>
+             </div>
+           </div>
+
+           {/* Service 2 */}
+           <div className={styles.card}>
+             <div className={styles.cardHeader}>
+               <span className={styles.cardNumber}>02 — HOSTING & SETUP</span>
+               <h3 className={styles.cardTitle}>Rock-Solid Infrastructure</h3>
+             </div>
+             <p className={styles.cardDesc}>
+               We handle the technical heavy lifting so you don't have to. We host your platform remotely on our robust, enterprise-grade infrastructure—or seamlessly help you set it up locally. No more shared server downtime, plugin conflicts, or slow database queries holding your business back.
+             </p>
+             <div className={styles.techStack}>
+               <span className={styles.tag}>Cloud Architecture</span>
+               <span className={styles.tag}>Zero-Downtime</span>
+               <span className={styles.tag}>Secure</span>
+             </div>
+           </div>
+
+           {/* Service 3 */}
+           <div className={styles.card}>
+             <div className={styles.cardHeader}>
+               <span className={styles.cardNumber}>03 — AUTOMATIONS & AI</span>
+               <h3 className={styles.cardTitle}>Next-Gen Systems</h3>
+             </div>
+             <p className={styles.cardDesc}>
+               Enhance your business with cutting-edge AI and advanced automations. We build bespoke solutions, streamlined internal workflows, and even specialized, high-frequency trading bots. If it costs you time, we reverse-engineer it to run on autopilot.
+             </p>
+             <div className={styles.techStack}>
+               <span className={styles.tag}>AI Integrations</span>
+               <span className={styles.tag}>Custom Bots</span>
+               <span className={styles.tag}>Workflows</span>
+               <span className={styles.tag}>Trading Algorithms</span>
+             </div>
+           </div>
+           
+           <div className={styles.manifestoBlock}>
+             <h2 className={styles.manifestoTitle}>The Viffey Standard</h2>
+             <p className={styles.manifestoText}>
+               A website is not a brochure. It is a 24/7 sales engine. If your site takes more than 2 seconds to load, you are losing money to a competitor. That's why we abandon obsolete CMS platforms and engineer exclusively in the modern web's most performant frameworks.
+             </p>
+           </div>
          </div>
       </div>
       <Footer />
