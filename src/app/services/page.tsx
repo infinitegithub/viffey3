@@ -17,11 +17,22 @@ export default function ServicesPage() {
          </h1>
          <div style={{ fontFamily: 'var(--font-body)', fontSize: '1.05rem', color: 'rgba(240, 237, 232, 0.6)', lineHeight: 1.8, maxWidth: '800px', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <p>
-                [The homepage gives a fantastic high-level overview. This dedicated Services page (src/app/services/page.tsx) is where you drop your complex processes, tech stacks, and in-depth methodologies.]
+                We offer comprehensive solutions to help you succeed online:
             </p>
-            <p>
-                [Consider breaking this section out into Web Design, Branding, and Development with comprehensive deliverable lists for each phase to convert higher-ticket clients.]
-            </p>
+            <ul style={{ listStyleType: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+              <li>
+                <strong style={{ color: 'var(--white)', display: 'block', fontSize: '1.25rem', marginBottom: '0.5rem' }}>Online Presence</strong>
+                Whether it is a high-converting landing page, a full-fledged store, or whatever your idea is, we can help bring it to life.
+              </li>
+              <li>
+                <strong style={{ color: 'var(--white)', display: 'block', fontSize: '1.25rem', marginBottom: '0.5rem' }}>Hosting & Setup</strong>
+                We handle the technical heavy lifting. We can host your platform remotely on our robust infrastructure or help you set it up locally.
+              </li>
+              <li>
+                <strong style={{ color: 'var(--white)', display: 'block', fontSize: '1.25rem', marginBottom: '0.5rem' }}>Automations & AI</strong>
+                Enhance your business with cutting-edge AI and automations. We build custom solutions, automated workflows, and even specialized trading bots.
+              </li>
+            </ul>
          </div>
       </div>
       <Footer />

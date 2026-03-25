@@ -262,7 +262,7 @@ export default function Contact() {
                 <div key={b.label} className={styles.infoBlock}>
                   <span className={styles.infoLabel}>{b.label}</span>
                   <span className={styles.infoValue}>{b.value}</span>
-                </div>
+               </div>
               ))}
             </div>
 

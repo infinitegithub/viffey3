@@ -6,10 +6,10 @@ import Image from 'next/image';
 import styles from './Nav.module.css';
 
 const links = [
-  { label: 'Work',      href: '/#work'     },
-  { label: 'Services',  href: '/services'  },
-  { label: 'About',     href: '/about'     },
-  { label: 'Contact',   href: '/#contact'  },
+  { label: 'Work', href: '/#work' },
+  { label: 'Services', href: '/services' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/#contact' },
 ];
 
 export default function Nav() {
