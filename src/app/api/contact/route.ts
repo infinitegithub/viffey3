@@ -56,7 +56,21 @@ export async function POST(req: NextRequest) {
     if (!espoRes.ok) {
       const errorText = await espoRes.text();
       console.error('[Contact] EspoCRM LeadCapture Error:', espoRes.status, errorText);
-      return NextResponse.json({ success: false, error: 'Server error processing request.' }, { status: 500 });
+
+      // Try to parse specific validation errors from EspoCRM to show the user
+      try {
+        const errObj = JSON.parse(errorText);
+        let errorReason = 'CRM rejected the submission.';
+        if (errObj?.messageTranslation?.label === 'validationFailure') {
+            errorReason = `CRM Validation Failed (Field: ${errObj.messageTranslation.data?.field || 'unknown'})`;
+        } else if (errorText.includes('duplicate')) {
+            errorReason = 'CRM detected a duplicate entry.';
+        }
+        return NextResponse.json({ success: false, error: errorReason }, { status: 400 });
+      } catch (e) {
+        // Fallback to sending a sanitized portion of the raw error for debugging
+        return NextResponse.json({ success: false, error: `CRM Error: ${espoRes.status} - ${errorText.substring(0, 100)}` }, { status: 500 });
+      }
     }
 
     // Success
