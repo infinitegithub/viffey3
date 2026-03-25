@@ -28,13 +28,43 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: false, error }, { status: 400 });
   }
 
-  // Log submission (replace with database storage when ready)
-  console.log('[Contact] New submission:', {
-    name: data.name,
-    email: data.email,
-    phone: data.phone,
-    submittedAt: new Date().toISOString(),
-  });
+  // Splitting name (many CRMs expect lastName or separate fields)
+  const nameParts = data.name.trim().split(' ');
+  const firstName = nameParts[0];
+  const lastName = nameParts.length > 1 ? nameParts.slice(1).join(' ') : '[No Last Name provided]';
 
-  return NextResponse.json({ success: true, message: "Message received — we'll be in touch within 24 hours." });
+  try {
+    const payload: Record<string, string> = {
+      firstName,
+      lastName,
+      emailAddress: data.email,
+      description: data.message,
+    };
+
+    if (data.phone && data.phone.trim().length > 0) {
+      payload.phoneNumber = data.phone.trim();
+    }
+
+    const espoRes = await fetch('https://crm.viffey.com/api/v1/LeadCapture/2f46a77586d4da67ee9c6247a55270e2', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!espoRes.ok) {
+      const errorText = await espoRes.text();
+      console.error('[Contact] EspoCRM LeadCapture Error:', espoRes.status, errorText);
+      return NextResponse.json({ success: false, error: 'Server error processing request.' }, { status: 500 });
+    }
+
+    // Success
+    console.log(`[Contact] Lead submitted successfully for ${data.email}`);
+    return NextResponse.json({ success: true, message: "Message received — we'll be in touch within 24 hours." });
+
+  } catch (error) {
+    console.error('[Contact] Network/Fetch Error:', error);
+    return NextResponse.json({ success: false, error: 'Network error while contacting CRM.' }, { status: 500 });
+  }
 }
