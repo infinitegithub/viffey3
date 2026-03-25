@@ -43,26 +43,26 @@ export default function Hero() {
         <div className={styles.headlines}>
           <div className={styles.lineWrap}>
             <div ref={line1Ref} className={`${styles.line} ${styles.lineLeft}`}>
-              <span className={styles.displayText}>WE ENGINEER</span>
+              <span className={styles.displayText}>WE BRING</span>
             </div>
           </div>
 
           <div className={styles.lineWrap}>
             <div ref={line2Ref} className={`${styles.line} ${styles.lineRight}`}>
-              <span className={`${styles.displayText} ${styles.italic}`}>BESPOKE</span>
+              <span className={`${styles.displayText} ${styles.italic}`}>IDEAS</span>
             </div>
           </div>
 
           <div className={styles.lineWrap}>
             <div ref={line3Ref} className={`${styles.line} ${styles.lineLeft}`}>
-              <span className={styles.displayText}>DIGITAL</span>
+              <span className={styles.displayText}>TO</span>
             </div>
           </div>
 
           <div className={styles.lineWrap}>
             <div ref={line4Ref} className={`${styles.line} ${styles.lineRight}`}>
               <span className={styles.displayText}>
-                PLATFORMS
+                LIFE
                 <span className={styles.accentDot}>.</span>
               </span>
             </div>
