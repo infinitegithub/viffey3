@@ -3,19 +3,28 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import styles from './Nav.module.css';
+import type { Dictionary } from '@/i18n';
 
-const links = [
-  { label: 'Work', href: '/#work' },
-  { label: 'Services', href: '/services' },
-  { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
-];
+const localeLabels: Record<string, string> = {
+  en: 'EN',
+  fr: 'FR',
+  ar: 'عر',
+};
 
-export default function Nav() {
+export default function Nav({ dict, locale }: { dict: Dictionary; locale: string }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
+  const pathname = usePathname();
+
+  const links = [
+    { label: dict.nav.work, href: `/${locale}/#work` },
+    { label: dict.nav.services, href: `/${locale}/services` },
+    { label: dict.nav.about, href: `/${locale}/about` },
+    { label: dict.nav.contact, href: `/${locale}/contact` },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -29,13 +38,20 @@ export default function Nav() {
 
   const closeMenu = () => setMenuOpen(false);
 
+  // Build locale-switched path: replace current locale prefix with new one
+  const switchLocalePath = (newLocale: string) => {
+    const segments = pathname.split('/');
+    segments[1] = newLocale;
+    return segments.join('/') || `/${newLocale}`;
+  };
+
   return (
     <>
       <nav ref={navRef} className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
         <div className={styles.inner}>
-          <Link href="/" className={styles.logo} onClick={(e) => {
+          <Link href={`/${locale}`} className={styles.logo} onClick={(e) => {
             closeMenu();
-            if (window.location.pathname === '/') {
+            if (pathname === `/${locale}`) {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }
@@ -51,15 +67,28 @@ export default function Nav() {
           </Link>
 
           <div className={styles.desktopLinks}>
-            {links.map((l, i) => (
+            {links.map((l) => (
               <a key={l.href} href={l.href} className={styles.navLink}>
                 {l.label}
               </a>
             ))}
           </div>
 
-          <Link href="/contact" className={styles.cta}>
-            Start a project
+          {/* Language Switcher */}
+          <div className={styles.langSwitcher}>
+            {Object.entries(localeLabels).map(([loc, label]) => (
+              <Link
+                key={loc}
+                href={switchLocalePath(loc)}
+                className={`${styles.langBtn} ${loc === locale ? styles.langBtnActive : ''}`}
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
+
+          <Link href={`/${locale}/contact`} className={styles.cta}>
+            {dict.nav.cta}
           </Link>
 
           <button
@@ -86,9 +115,22 @@ export default function Nav() {
               {l.label}
             </a>
           ))}
+          {/* Mobile Language Switcher */}
+          <div className={styles.mobileLangSwitcher}>
+            {Object.entries(localeLabels).map(([loc, label]) => (
+              <Link
+                key={loc}
+                href={switchLocalePath(loc)}
+                className={`${styles.mobileLangBtn} ${loc === locale ? styles.langBtnActive : ''}`}
+                onClick={closeMenu}
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
         </nav>
         <div className={styles.mobileFooter}>
-          <span className={styles.t_label}>Available for projects</span>
+          <span className={styles.t_label}>{dict.nav.availableForProjects}</span>
         </div>
       </div>
     </>

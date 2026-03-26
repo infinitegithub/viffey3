@@ -1,24 +1,14 @@
 import styles from './Marquee.module.css';
+import type { Dictionary } from '@/i18n';
 
-const ITEMS = [
-  'Development',
-  'Interactivity',
-  'Motion Direction',
-  'Visual Identity',
-  'Digital Experiences',
-  'Technical Excellence',
-  'Next.js Specialists',
-  'GSAP Animations',
-];
-
-export default function Marquee() {
+export default function Marquee({ dict }: { dict: Dictionary }) {
   return (
     <div className={styles.marquee}>
       <div className={styles.inner}>
         {/* Render twice for seamless loop */}
         {[1, 2].map(i => (
           <div key={i} className={styles.track}>
-            {ITEMS.map(it => (
+            {dict.marquee.map(it => (
               <div key={it} className={styles.item}>
                 <span className={styles.dot}>•</span>
                 {it}

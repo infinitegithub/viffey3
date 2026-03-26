@@ -2,13 +2,7 @@
 
 import { useRef } from 'react';
 import styles from './Footer.module.css';
-
-const NAV_LINKS = [
-  { label: 'Work', href: '/#work' },
-  { label: 'Services', href: '/services' },
-  { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
-];
+import type { Dictionary } from '@/i18n';
 
 const SOCIAL_LINKS = [
   { label: 'Twitter', href: 'https://twitter.com', ext: true },
@@ -17,8 +11,15 @@ const SOCIAL_LINKS = [
   { label: 'TikTok', href: 'https://tiktok.com', ext: true },
 ];
 
-export default function Footer() {
+export default function Footer({ dict, locale }: { dict: Dictionary; locale: string }) {
   const year = new Date().getFullYear();
+
+  const navLinks = [
+    { label: dict.nav.work, href: `/${locale}/#work` },
+    { label: dict.nav.services, href: `/${locale}/services` },
+    { label: dict.nav.about, href: `/${locale}/about` },
+    { label: dict.nav.contact, href: `/${locale}/contact` },
+  ];
 
   return (
     <footer className={styles.footer}>
@@ -26,15 +27,15 @@ export default function Footer() {
       {/* ── CTA block ───────────────────────────────── */}
       <div className={styles.cta}>
         <div className={styles.ctaLeft}>
-          <p className={styles.ctaLabel}>Ready to work together?</p>
+          <p className={styles.ctaLabel}>{dict.footer.ctaLabel}</p>
           <h2 className={styles.ctaHeading}>
-            Let's build something<br />
-            <em>extraordinary.</em>
+            {dict.footer.ctaHeadingLine1}<br />
+            <em>{dict.footer.ctaHeadingLine2}</em>
           </h2>
         </div>
         <div className={styles.ctaRight}>
-          <a href="/contact" className={styles.ctaBtn}>
-            <span className={styles.ctaBtnText}>Start a project</span>
+          <a href={`/${locale}/contact`} className={styles.ctaBtn}>
+            <span className={styles.ctaBtnText}>{dict.footer.ctaBtn}</span>
             <span className={styles.ctaBtnArrow}>→</span>
           </a>
           <a href="mailto:contact@viffey.com" className={styles.ctaEmail}>
@@ -49,16 +50,16 @@ export default function Footer() {
       {/* ── Link grid ───────────────────────────────── */}
       <div className={styles.grid}>
         <div className={styles.gridCol}>
-          <span className={styles.colLabel}>Navigation</span>
+          <span className={styles.colLabel}>{dict.footer.navLabel}</span>
           <nav className={styles.colLinks}>
-            {NAV_LINKS.map(l => (
+            {navLinks.map(l => (
               <a key={l.label} href={l.href} className={styles.colLink}>{l.label}</a>
             ))}
           </nav>
         </div>
 
         <div className={styles.gridCol}>
-          <span className={styles.colLabel}>Social</span>
+          <span className={styles.colLabel}>{dict.footer.socialLabel}</span>
           <nav className={styles.colLinks}>
             {SOCIAL_LINKS.map(l => (
               <a
@@ -73,16 +74,12 @@ export default function Footer() {
             ))}
           </nav>
         </div>
-
-
-
-
       </div>
 
       {/* ── Bottom bar ──────────────────────────────── */}
       <div className={styles.bottom}>
-        <span className={styles.copy}>© {year} Viffey. All rights reserved.</span>
-        <span className={styles.copy}>Digital Agency — Est. 2024</span>
+        <span className={styles.copy}>{dict.footer.copyright.replace('{year}', String(year))}</span>
+        <span className={styles.copy}>{dict.footer.tagline}</span>
       </div>
     </footer>
   );

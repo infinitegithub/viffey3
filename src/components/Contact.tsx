@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './Contact.module.css';
+import type { Dictionary } from '@/i18n';
 
 // Register ScrollTrigger with error handling
 let gsapReady = false;
@@ -16,7 +17,7 @@ try {
 
 type Status = 'idle' | 'sending' | 'success' | 'error';
 
-export default function Contact({ hideQA = false }: { hideQA?: boolean }) {
+export default function Contact({ dict, hideQA = false }: { dict: Dictionary; hideQA?: boolean }) {
   const sectionRef = useRef<HTMLElement>(null);
   const headRef = useRef<HTMLHeadingElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
@@ -31,6 +32,8 @@ export default function Contact({ hideQA = false }: { hideQA?: boolean }) {
   const [status, setStatus] = useState<Status>('idle');
   const [errorMsg, setErrorMsg] = useState('');
   const [touched, setTouched] = useState<Record<string, boolean>>({});
+
+  const t = dict.contact;
 
   // Scroll-triggered reveal (with GSAP error handling)
   useEffect(() => {
@@ -58,7 +61,6 @@ export default function Contact({ hideQA = false }: { hideQA?: boolean }) {
         );
       } catch (e) {
         console.warn('[Contact] GSAP animation error:', e);
-        // Fallback: show elements immediately
         if (headRef.current) headRef.current.style.opacity = '1';
         if (formRef.current) formRef.current.style.opacity = '1';
       }
@@ -93,7 +95,7 @@ export default function Contact({ hideQA = false }: { hideQA?: boolean }) {
 
       if (!res.ok || !json.success) {
         setStatus('error');
-        setErrorMsg(json.error ?? 'Something went wrong. Please try again.');
+        setErrorMsg(json.error ?? t.errorDefault);
         return;
       }
 
@@ -102,7 +104,7 @@ export default function Contact({ hideQA = false }: { hideQA?: boolean }) {
       setTouched({});
     } catch {
       setStatus('error');
-      setErrorMsg('Network error. Please check your connection and try again.');
+      setErrorMsg(t.errorNetwork);
     }
   };
 
@@ -112,10 +114,10 @@ export default function Contact({ hideQA = false }: { hideQA?: boolean }) {
 
         {/* Header row */}
         <div className={styles.headerRow}>
-          <span className={styles.label}>Contact</span>
+          <span className={styles.label}>{t.label}</span>
           <h2 ref={headRef} className={styles.heading}>
-            Ready to outpace<br />
-            <em>the competition?</em>
+            {t.headingLine1}<br />
+            <em>{t.headingLine2}</em>
           </h2>
         </div>
 
@@ -127,15 +129,13 @@ export default function Contact({ hideQA = false }: { hideQA?: boolean }) {
             {status === 'success' ? (
               <div className={styles.successState}>
                 <div className={styles.successIcon}>✓</div>
-                <h3 className={styles.successTitle}>Message received.</h3>
-                <p className={styles.successSub}>
-                  We read every submission carefully. Expect a reply within 24 hours.
-                </p>
+                <h3 className={styles.successTitle}>{t.successTitle}</h3>
+                <p className={styles.successSub}>{t.successSub}</p>
                 <button
                   className={styles.resetBtn}
                   onClick={() => setStatus('idle')}
                 >
-                  Send another message
+                  {t.sendAnother}
                 </button>
               </div>
             ) : (
@@ -145,14 +145,14 @@ export default function Contact({ hideQA = false }: { hideQA?: boolean }) {
                 <div className={styles.row}>
                   <div className={styles.field}>
                     <label className={styles.fieldLabel} htmlFor="name">
-                      Full Name <span className={styles.required}>*</span>
+                      {t.fullName} <span className={styles.required}>{t.required}</span>
                     </label>
                     <input
                       id="name"
                       name="name"
                       type="text"
                       autoComplete="name"
-                      placeholder="Jane Smith"
+                      placeholder={t.placeholder.name}
                       value={form.name}
                       onChange={handleChange}
                       onBlur={handleBlur}
@@ -160,20 +160,20 @@ export default function Contact({ hideQA = false }: { hideQA?: boolean }) {
                       required
                     />
                     {isFieldInvalid('name', form.name) && (
-                      <span className={styles.fieldError}>Name is required</span>
+                      <span className={styles.fieldError}>{t.validation.nameRequired}</span>
                     )}
                   </div>
 
                   <div className={styles.field}>
                     <label className={styles.fieldLabel} htmlFor="email">
-                      Email <span className={styles.required}>*</span>
+                      {t.email} <span className={styles.required}>{t.required}</span>
                     </label>
                     <input
                       id="email"
                       name="email"
                       type="email"
                       autoComplete="email"
-                      placeholder="jane@company.com"
+                      placeholder={t.placeholder.email}
                       value={form.email}
                       onChange={handleChange}
                       onBlur={handleBlur}
@@ -181,7 +181,7 @@ export default function Contact({ hideQA = false }: { hideQA?: boolean }) {
                       required
                     />
                     {isFieldInvalid('email', form.email) && (
-                      <span className={styles.fieldError}>Email is required</span>
+                      <span className={styles.fieldError}>{t.validation.emailRequired}</span>
                     )}
                   </div>
                 </div>
@@ -189,14 +189,14 @@ export default function Contact({ hideQA = false }: { hideQA?: boolean }) {
                 {/* Row 2 — Phone */}
                 <div className={styles.field}>
                   <label className={styles.fieldLabel} htmlFor="phone">
-                    Phone Number
+                    {t.phone}
                   </label>
                   <input
                     id="phone"
                     name="phone"
                     type="tel"
                     autoComplete="tel"
-                    placeholder="+1 (555) 000-0000"
+                    placeholder={t.placeholder.phone}
                     value={form.phone}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -207,13 +207,13 @@ export default function Contact({ hideQA = false }: { hideQA?: boolean }) {
                 {/* Row 4 — Message */}
                 <div className={styles.field}>
                   <label className={styles.fieldLabel} htmlFor="message">
-                    Project brief <span className={styles.required}>*</span>
+                    {t.projectBrief} <span className={styles.required}>{t.required}</span>
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     rows={6}
-                    placeholder="Tell us what you're building, what's not working, or what you'd like to exist…"
+                    placeholder={t.placeholder.message}
                     value={form.message}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -221,7 +221,7 @@ export default function Contact({ hideQA = false }: { hideQA?: boolean }) {
                     required
                   />
                   {isFieldInvalid('message', form.message) && (
-                    <span className={styles.fieldError}>Please describe your project</span>
+                    <span className={styles.fieldError}>{t.validation.messageRequired}</span>
                   )}
                 </div>
 
@@ -237,7 +237,7 @@ export default function Contact({ hideQA = false }: { hideQA?: boolean }) {
                   disabled={status === 'sending'}
                 >
                   <span className={styles.submitText}>
-                    {status === 'sending' ? 'Sending…' : 'Send message'}
+                    {status === 'sending' ? t.sending : t.sendMessage}
                   </span>
                   <span className={styles.submitArrow} aria-hidden="true">→</span>
                 </button>
@@ -249,7 +249,7 @@ export default function Contact({ hideQA = false }: { hideQA?: boolean }) {
           {/* Right — Info column */}
           <aside className={styles.infoCol}>
             <div className={styles.infoEmail}>
-              <span className={styles.infoLabel}>Email us directly</span>
+              <span className={styles.infoLabel}>{t.emailLabel}</span>
               <a href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'contact@viffey.com'}`} className={styles.email}>
                 {process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'contact@viffey.com'}
               </a>
@@ -257,7 +257,7 @@ export default function Contact({ hideQA = false }: { hideQA?: boolean }) {
 
             <div className={styles.infoBlocks}>
               {[
-                { label: 'Response time', value: 'Within 24 hours' },
+                { label: t.responseTime, value: t.responseValue },
               ].map(b => (
                 <div key={b.label} className={styles.infoBlock}>
                   <span className={styles.infoLabel}>{b.label}</span>
@@ -267,36 +267,19 @@ export default function Contact({ hideQA = false }: { hideQA?: boolean }) {
             </div>
 
             <div className={styles.crmNote}>
-              <span className={styles.infoLabel}>Your data</span>
-              <p className={styles.crmText}>
-                Submissions are stored securely and used only to respond to your enquiry.
-                We do not sell or share your data.
-              </p>
+              <span className={styles.infoLabel}>{t.dataLabel}</span>
+              <p className={styles.crmText}>{t.dataText}</p>
             </div>
 
             {!hideQA && (
               <div className={styles.crmNote} style={{ marginTop: '2.5rem' }}>
-                <span className={styles.infoLabel}>Q&A</span>
-                <p className={styles.crmText} style={{ marginBottom: '1.25rem' }}>
-                  <strong style={{ color: 'var(--white)', fontWeight: 500 }}>Do you work with small businesses?</strong><br />
-                  Yes, we help businesses of all sizes establish and scale their online presence.
-                </p>
-                <p className={styles.crmText} style={{ marginBottom: '1.25rem' }}>
-                  <strong style={{ color: 'var(--white)', fontWeight: 500 }}>How much does a project cost?</strong><br />
-                  We offer solutions that come at little cost to your wallet. You can always reach out for a free inquiry!
-                </p>
-                <p className={styles.crmText} style={{ marginBottom: '1.25rem' }}>
-                  <strong style={{ color: 'var(--white)', fontWeight: 500 }}>Can you build bots or automations?</strong><br />
-                  Absolutely. From automated workflows to specialized trading bots, we have the skills and expertise.
-                </p>
-                <p className={styles.crmText} style={{ marginBottom: '1.25rem' }}>
-                  <strong style={{ color: 'var(--white)', fontWeight: 500 }}>How long does a typical project take?</strong><br />
-                  Most standard web projects take 4-6 weeks from initial strategy to launch. More complex applications or bespoke automations take longer depending on scope.
-                </p>
-                <p className={styles.crmText}>
-                  <strong style={{ color: 'var(--white)', fontWeight: 500 }}>Do you provide ongoing support?</strong><br />
-                  Yes, we offer maintenance retainers for our clients to ensure everything stays fast, secure, and up-to-date.
-                </p>
+                <span className={styles.infoLabel}>{t.qa.label}</span>
+                {t.qa.items.map((item, idx) => (
+                  <p key={idx} className={styles.crmText} style={{ marginBottom: idx < t.qa.items.length - 1 ? '1.25rem' : undefined }}>
+                    <strong style={{ color: 'var(--white)', fontWeight: 500 }}>{item.q}</strong><br />
+                    {item.a}
+                  </p>
+                ))}
               </div>
             )}
           </aside>

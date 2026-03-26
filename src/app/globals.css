@@ -325,3 +325,14 @@ button {
     cursor: pointer;
   }
 }
+
+/* ─────────────────────────────────────────────
+   RTL SUPPORT (Arabic)
+───────────────────────────────────────────── */
+[dir="rtl"] {
+  direction: rtl;
+}
+
+[dir="rtl"] body {
+  text-align: right;
+}

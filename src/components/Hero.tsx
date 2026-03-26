@@ -3,8 +3,9 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import styles from './Hero.module.css';
+import type { Dictionary } from '@/i18n';
 
-export default function Hero() {
+export default function Hero({ dict }: { dict: Dictionary }) {
   const sectionRef = useRef<HTMLElement>(null);
   const line1Ref   = useRef<HTMLDivElement>(null);
   const line2Ref   = useRef<HTMLDivElement>(null);
@@ -37,48 +38,49 @@ export default function Hero() {
     <section ref={sectionRef} className={styles.hero} id="home">
       <div className={styles.inner}>
 
-
-
         {/* Main headline — cleanly aligned */}
         <div className={styles.headlines}>
           <div className={styles.lineWrap}>
             <div ref={line1Ref} className={styles.line}>
-              <span className={styles.displayText}>WE BRING</span>
+              <span className={styles.displayText}>{dict.hero.line1}</span>
             </div>
           </div>
 
           <div className={styles.lineWrap}>
             <div ref={line2Ref} className={styles.line}>
-              <span className={`${styles.displayText} ${styles.italic}`}>IDEAS</span>
+              <span className={`${styles.displayText} ${styles.italic}`}>{dict.hero.line2}</span>
             </div>
           </div>
 
           <div className={styles.lineWrap}>
             <div ref={line3Ref} className={styles.line}>
-              <span className={styles.displayText}>TO</span>
-            </div>
-          </div>
-
-          <div className={styles.lineWrap}>
-            <div ref={line4Ref} className={styles.line}>
               <span className={styles.displayText}>
-                LIFE
-                <span className={styles.accentDot}>.</span>
+                {dict.hero.line3}
+                {!dict.hero.line4 && <span className={styles.accentDot}>.</span>}
               </span>
             </div>
           </div>
+
+          {dict.hero.line4 && (
+            <div className={styles.lineWrap}>
+              <div ref={line4Ref} className={styles.line}>
+                <span className={styles.displayText}>
+                  {dict.hero.line4}
+                  <span className={styles.accentDot}>.</span>
+                </span>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Sub content row */}
         <div ref={subRef} className={styles.sub}>
           <div className={styles.subLeft}>
-            <span className={styles.label}>Digital Agency — Est. 2024</span>
+            <span className={styles.label}>{dict.hero.label}</span>
           </div>
           <div className={styles.subRight}>
             <p className={styles.subText}>
-              Web design & development, brand identity,<br />
-              and digital strategy for brands that refuse<br />
-              to be ordinary.
+              {dict.hero.subText}
             </p>
           </div>
         </div>
@@ -86,7 +88,7 @@ export default function Hero() {
         {/* Scroll indicator */}
         <div ref={scrollRef} className={styles.scrollIndicator}>
           <div className={styles.scrollLine} />
-          <span className={styles.scrollLabel}>Scroll</span>
+          <span className={styles.scrollLabel}>{dict.hero.scroll}</span>
         </div>
       </div>
     </section>

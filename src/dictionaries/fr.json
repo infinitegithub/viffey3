@@ -1,0 +1,211 @@
+{
+  "meta": {
+    "title": "Viffey — Agence Digitale Leader au Maroc",
+    "description": "Viffey est une agence digitale premium au Maroc spécialisée en design web, branding et développement. Nous créons des expériences extraordinaires.",
+    "ogTitle": "Viffey — Agence Digitale Premium au Maroc",
+    "ogDescription": "Nous concevons et construisons des expériences digitales qui marquent. Spécialisés en Web, Branding et Stratégie.",
+    "twitterTitle": "Viffey — Agence Digitale Premium au Maroc",
+    "twitterDescription": "Nous concevons et construisons des expériences digitales qui marquent.",
+    "locale": "fr_MA"
+  },
+  "nav": {
+    "work": "Réalisations",
+    "services": "Services",
+    "about": "À propos",
+    "contact": "Contact",
+    "cta": "Démarrer un projet",
+    "availableForProjects": "Disponible pour de nouveaux projets"
+  },
+  "hero": {
+    "line1": "NOUS DONNONS",
+    "line2": "VIE",
+    "line3": "À VOS IDÉES",
+    "line4": "",
+    "label": "Agence Digitale — Depuis 2024",
+    "subText": "Design web & développement, identité de marque et stratégie digitale pour les marques qui refusent d'être ordinaires.",
+    "scroll": "Défiler"
+  },
+  "marquee": [
+    "Développement",
+    "Interactivité",
+    "Direction Artistique",
+    "Identité Visuelle",
+    "Expériences Digitales",
+    "Excellence Technique",
+    "Spécialistes Next.js",
+    "Animations GSAP"
+  ],
+  "services": {
+    "label": "Services",
+    "headingLine1": "Ce que nous",
+    "headingLine2": "faisons de mieux",
+    "items": [
+      {
+        "num": "01",
+        "title": "Présence\nEn Ligne",
+        "desc": "Qu'il s'agisse d'une landing page à fort taux de conversion, d'une boutique en ligne complète ou de toute autre idée, nous pouvons la concrétiser.",
+        "tags": ["Landing Pages", "E-Commerce", "Dev Sur Mesure"]
+      },
+      {
+        "num": "02",
+        "title": "Hébergement\n& Mise en place",
+        "desc": "Nous gérons la partie technique. Nous hébergeons votre plateforme à distance sur notre infrastructure robuste ou vous aidons à la configurer localement.",
+        "tags": ["Cloud Hosting", "Installation Locale", "Déploiement"]
+      },
+      {
+        "num": "03",
+        "title": "Automatisations\n& IA",
+        "desc": "Optimisez votre activité grâce à l'IA de pointe et aux automatisations. Nous développons des solutions sur mesure, des workflows automatisés et même des bots de trading spécialisés.",
+        "tags": ["Intégrations IA", "Bots", "Algorithmes de Trading"]
+      }
+    ]
+  },
+  "work": {
+    "label": "Réalisations",
+    "headingLine1": "Projets",
+    "headingLine2": "récents",
+    "projects": [
+      {
+        "id": "01",
+        "title": "Lumina",
+        "category": "Design Web · Développement",
+        "year": "2024",
+        "desc": "Refonte complète et création e-commerce pour une marque de soins de luxe. Augmentation de 2.4× des conversions après le lancement."
+      },
+      {
+        "id": "02",
+        "title": "Forma Studio",
+        "category": "Identité de Marque",
+        "year": "2024",
+        "desc": "Système d'identité visuelle pour un studio d'architecture. Logotype, système typographique et supports imprimés."
+      },
+      {
+        "id": "03",
+        "title": "Axis Capital",
+        "category": "Design Web · Stratégie",
+        "year": "2023",
+        "desc": "Présence digitale pour une société de capital-investissement. Positionnement, rédaction et un site qui impose le respect."
+      },
+      {
+        "id": "04",
+        "title": "Noor Health",
+        "category": "Design Web · Branding",
+        "year": "2023",
+        "desc": "Marque et site produit de bout en bout pour une startup santé digitale. Accélérateur de Série A."
+      }
+    ],
+    "footer": "Tous les travaux disponibles sur demande"
+  },
+  "contact": {
+    "label": "Contact",
+    "headingLine1": "Prêt à surpasser",
+    "headingLine2": "la concurrence ?",
+    "fullName": "Nom complet",
+    "email": "E-mail",
+    "phone": "Numéro de téléphone",
+    "projectBrief": "Description du projet",
+    "placeholder": {
+      "name": "Jean Dupont",
+      "email": "jean@entreprise.com",
+      "phone": "+212 6 00 00 00 00",
+      "message": "Décrivez-nous ce que vous construisez, ce qui ne fonctionne pas ou ce que vous aimeriez créer…"
+    },
+    "required": "*",
+    "validation": {
+      "nameRequired": "Le nom est requis",
+      "emailRequired": "L'e-mail est requis",
+      "messageRequired": "Veuillez décrire votre projet"
+    },
+    "sendMessage": "Envoyer le message",
+    "sending": "Envoi en cours…",
+    "successTitle": "Message reçu.",
+    "successSub": "Nous lisons chaque soumission attentivement. Attendez-vous à une réponse sous 24 heures.",
+    "sendAnother": "Envoyer un autre message",
+    "emailLabel": "Écrivez-nous directement",
+    "responseTime": "Temps de réponse",
+    "responseValue": "Sous 24 heures",
+    "dataLabel": "Vos données",
+    "dataText": "Les soumissions sont stockées de manière sécurisée et utilisées uniquement pour répondre à votre demande. Nous ne vendons ni ne partageons vos données.",
+    "errorDefault": "Une erreur est survenue. Veuillez réessayer.",
+    "errorNetwork": "Erreur réseau. Veuillez vérifier votre connexion et réessayer.",
+    "qa": {
+      "label": "FAQ",
+      "items": [
+        {
+          "q": "Travaillez-vous avec les petites entreprises ?",
+          "a": "Oui, nous aidons les entreprises de toutes tailles à établir et développer leur présence en ligne."
+        },
+        {
+          "q": "Combien coûte un projet ?",
+          "a": "Nous proposons des solutions à moindre coût. Vous pouvez toujours nous contacter pour une demande gratuite !"
+        },
+        {
+          "q": "Pouvez-vous créer des bots ou des automatisations ?",
+          "a": "Absolument. Des workflows automatisés aux bots de trading spécialisés, nous avons les compétences et l'expertise."
+        },
+        {
+          "q": "Combien de temps dure un projet type ?",
+          "a": "La plupart des projets web standards prennent 4 à 6 semaines de la stratégie initiale au lancement. Les applications plus complexes ou les automatisations sur mesure prennent plus de temps selon l'envergure."
+        },
+        {
+          "q": "Proposez-vous un support continu ?",
+          "a": "Oui, nous proposons des contrats de maintenance pour que tout reste rapide, sécurisé et à jour."
+        }
+      ]
+    }
+  },
+  "footer": {
+    "ctaLabel": "Prêts à collaborer ?",
+    "ctaHeadingLine1": "Construisons quelque chose",
+    "ctaHeadingLine2": "d'extraordinaire.",
+    "ctaBtn": "Démarrer un projet",
+    "navLabel": "Navigation",
+    "socialLabel": "Réseaux sociaux",
+    "copyright": "© {year} Viffey. Tous droits réservés.",
+    "tagline": "Agence Digitale — Depuis 2024"
+  },
+  "servicesPage": {
+    "title": "Services — Viffey",
+    "description": "Design web sur mesure, architecture personnalisée et SEO technique pour les marques qui refusent d'être ordinaires.",
+    "heroTitle1": "Ingénierie sur mesure.",
+    "heroTitle2": "Résultats mesurables.",
+    "intro1": "Beaucoup d'entreprises sont freinées par les limitations de performance des thèmes WordPress rigides et des constructeurs de pages standardisés.",
+    "intro2": "Chez Viffey, nous construisons {highlight} avec une technologie moderne (Next.js & React) conçue de A à Z pour mieux se positionner sur Google, mieux convertir et aider votre entreprise à croître efficacement.",
+    "highlight": "des architectures digitales sur mesure et ultra-rapides",
+    "cards": [
+      {
+        "number": "01 — PRÉSENCE EN LIGNE",
+        "title": "Développement Web & SEO Sur Mesure",
+        "desc": "Qu'il s'agisse d'une landing page à fort taux de conversion ou d'une boutique en ligne robuste, nous concrétisons votre vision. Nous priorisons le SEO technique dès le premier jour — votre site n'est pas seulement beau, il est parfaitement structuré pour que les moteurs de recherche l'explorent, l'indexent et le classent en tête.",
+        "tags": ["Next.js", "React", "SEO Technique", "Performance"]
+      },
+      {
+        "number": "02 — HÉBERGEMENT & MISE EN PLACE",
+        "title": "Infrastructure Solide comme le Roc",
+        "desc": "Nous gérons la partie technique pour vous. Nous hébergeons votre plateforme sur notre infrastructure robuste de niveau entreprise — ou vous aidons à la configurer localement. Plus de temps d'arrêt de serveur partagé, de conflits de plugins ou de requêtes lentes.",
+        "tags": ["Architecture Cloud", "Zéro-Downtime", "Sécurisé"]
+      },
+      {
+        "number": "03 — AUTOMATISATIONS & IA",
+        "title": "Systèmes Nouvelle Génération",
+        "desc": "Optimisez votre activité avec l'IA de pointe et des automatisations avancées. Nous créons des solutions sur mesure, des workflows internes simplifiés et même des bots de trading spécialisés et à haute fréquence. Si cela vous coûte du temps, nous le reenginerons pour fonctionner en pilote automatique.",
+        "tags": ["Intégrations IA", "Bots Sur Mesure", "Workflows", "Algorithmes de Trading"]
+      }
+    ],
+    "manifesto": {
+      "title": "Le Standard Viffey",
+      "text": "Un site web n'est pas une brochure. C'est un moteur de ventes 24h/24 et 7j/7. Si votre site met plus de 2 secondes à charger, vous risquez de perdre des clients potentiels. C'est pourquoi nous choisissons des frameworks modernes et performants plutôt que des plateformes CMS obsolètes, garantissant que votre fondation est construite pour la vitesse et une croissance durable."
+    }
+  },
+  "aboutPage": {
+    "title": "À propos — Viffey",
+    "description": "Découvrez Viffey, notre équipe et notre philosophie d'ingénierie.",
+    "heading": "À propos de Viffey.",
+    "p1": "Nous sommes spécialisés pour aider les entreprises comme la vôtre à réussir en ligne. Du design et développement web au marketing digital et à la publicité, nous avons les outils et l'expertise pour élever votre présence en ligne. Laissez-nous vous aider à naviguer dans le monde digital en évolution pour stimuler la croissance et atteindre vos objectifs.",
+    "p2": "Tout cela à moindre coût, et vous pouvez nous contacter pour toute demande gratuitement."
+  },
+  "contactPage": {
+    "title": "Contact — Viffey",
+    "description": "Contactez-nous pour commencer à construire votre plateforme digitale sur mesure."
+  }
+}

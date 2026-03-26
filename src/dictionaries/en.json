@@ -1,0 +1,211 @@
+{
+  "meta": {
+    "title": "Viffey — Leading Digital Agency in Morocco",
+    "description": "Viffey is a premium digital agency in Morocco specializing in web design, branding, and development. We build extraordinary experiences that move.",
+    "ogTitle": "Viffey — Premium Digital Agency in Morocco",
+    "ogDescription": "We design and build digital experiences that move. Specializing in Web, Branding, and Strategy.",
+    "twitterTitle": "Viffey — Premium Digital Agency in Morocco",
+    "twitterDescription": "We design and build digital experiences that move.",
+    "locale": "en_MA"
+  },
+  "nav": {
+    "work": "Work",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "cta": "Start a project",
+    "availableForProjects": "Available for projects"
+  },
+  "hero": {
+    "line1": "WE BRING",
+    "line2": "IDEAS",
+    "line3": "TO",
+    "line4": "LIFE",
+    "label": "Digital Agency — Est. 2024",
+    "subText": "Web design & development, brand identity, and digital strategy for brands that refuse to be ordinary.",
+    "scroll": "Scroll"
+  },
+  "marquee": [
+    "Development",
+    "Interactivity",
+    "Motion Direction",
+    "Visual Identity",
+    "Digital Experiences",
+    "Technical Excellence",
+    "Next.js Specialists",
+    "GSAP Animations"
+  ],
+  "services": {
+    "label": "Services",
+    "headingLine1": "What we",
+    "headingLine2": "do best",
+    "items": [
+      {
+        "num": "01",
+        "title": "Online\nPresence",
+        "desc": "Whether it is a high-converting landing page, a full-fledged store, or whatever your idea is, we can help bring it to life.",
+        "tags": ["Landing Pages", "E-Commerce", "Custom Dev"]
+      },
+      {
+        "num": "02",
+        "title": "Hosting\n& Setup",
+        "desc": "We handle the technical heavy lifting. We can host your platform remotely on our robust infrastructure or help you set it up locally.",
+        "tags": ["Cloud Hosting", "Local Setup", "Deployment"]
+      },
+      {
+        "num": "03",
+        "title": "Automations\n& AI",
+        "desc": "Enhance your business with cutting-edge AI and automations. We build custom solutions, automated workflows, and even specialized trading bots.",
+        "tags": ["AI Integrations", "Bots", "Trading Algorithms"]
+      }
+    ]
+  },
+  "work": {
+    "label": "Selected Work",
+    "headingLine1": "Recent",
+    "headingLine2": "projects",
+    "projects": [
+      {
+        "id": "01",
+        "title": "Lumina",
+        "category": "Web Design · Development",
+        "year": "2024",
+        "desc": "Full rebrand and e-commerce build for a luxury skincare brand. 2.4× conversion lift post-launch."
+      },
+      {
+        "id": "02",
+        "title": "Forma Studio",
+        "category": "Brand Identity",
+        "year": "2024",
+        "desc": "Visual identity system for an architecture studio. Wordmark, type system, and print collateral."
+      },
+      {
+        "id": "03",
+        "title": "Axis Capital",
+        "category": "Web Design · Strategy",
+        "year": "2023",
+        "desc": "Digital presence for a private equity firm. Positioning, copy, and a site that commands respect."
+      },
+      {
+        "id": "04",
+        "title": "Noor Health",
+        "category": "Web Design · Branding",
+        "year": "2023",
+        "desc": "End-to-end brand and product website for a digital health startup. Series A accelerant."
+      }
+    ],
+    "footer": "All work available upon request"
+  },
+  "contact": {
+    "label": "Contact",
+    "headingLine1": "Ready to outpace",
+    "headingLine2": "the competition?",
+    "fullName": "Full Name",
+    "email": "Email",
+    "phone": "Phone Number",
+    "projectBrief": "Project brief",
+    "placeholder": {
+      "name": "Jane Smith",
+      "email": "jane@company.com",
+      "phone": "+1 (555) 000-0000",
+      "message": "Tell us what you're building, what's not working, or what you'd like to exist…"
+    },
+    "required": "*",
+    "validation": {
+      "nameRequired": "Name is required",
+      "emailRequired": "Email is required",
+      "messageRequired": "Please describe your project"
+    },
+    "sendMessage": "Send message",
+    "sending": "Sending…",
+    "successTitle": "Message received.",
+    "successSub": "We read every submission carefully. Expect a reply within 24 hours.",
+    "sendAnother": "Send another message",
+    "emailLabel": "Email us directly",
+    "responseTime": "Response time",
+    "responseValue": "Within 24 hours",
+    "dataLabel": "Your data",
+    "dataText": "Submissions are stored securely and used only to respond to your enquiry. We do not sell or share your data.",
+    "errorDefault": "Something went wrong. Please try again.",
+    "errorNetwork": "Network error. Please check your connection and try again.",
+    "qa": {
+      "label": "Q&A",
+      "items": [
+        {
+          "q": "Do you work with small businesses?",
+          "a": "Yes, we help businesses of all sizes establish and scale their online presence."
+        },
+        {
+          "q": "How much does a project cost?",
+          "a": "We offer solutions that come at little cost to your wallet. You can always reach out for a free inquiry!"
+        },
+        {
+          "q": "Can you build bots or automations?",
+          "a": "Absolutely. From automated workflows to specialized trading bots, we have the skills and expertise."
+        },
+        {
+          "q": "How long does a typical project take?",
+          "a": "Most standard web projects take 4-6 weeks from initial strategy to launch. More complex applications or bespoke automations take longer depending on scope."
+        },
+        {
+          "q": "Do you provide ongoing support?",
+          "a": "Yes, we offer maintenance retainers for our clients to ensure everything stays fast, secure, and up-to-date."
+        }
+      ]
+    }
+  },
+  "footer": {
+    "ctaLabel": "Ready to work together?",
+    "ctaHeadingLine1": "Let's build something",
+    "ctaHeadingLine2": "extraordinary.",
+    "ctaBtn": "Start a project",
+    "navLabel": "Navigation",
+    "socialLabel": "Social",
+    "copyright": "© {year} Viffey. All rights reserved.",
+    "tagline": "Digital Agency — Est. 2024"
+  },
+  "servicesPage": {
+    "title": "Services — Viffey",
+    "description": "Bespoke Web Design, Custom Architecture, and Technical SEO for brands that refuse to be ordinary.",
+    "heroTitle1": "Custom engineering.",
+    "heroTitle2": "Measurable results.",
+    "intro1": "Many businesses struggle with the performance limitations of rigid WordPress themes and cookie-cutter page builders.",
+    "intro2": "At Viffey, we build {highlight} using modern technology (Next.js & React) designed from the ground up to rank higher on Google, convert better, and help your business scale efficiently.",
+    "highlight": "bespoke, lightning-fast digital architectures",
+    "cards": [
+      {
+        "number": "01 — ONLINE PRESENCE",
+        "title": "Custom Web Development & SEO",
+        "desc": "Whether it's a high-converting landing page or a full-fledged robust storefront, we bring your vision to life. We prioritize technical SEO from day one—meaning your site doesn't just look stunning, it's structured perfectly for search engines to crawl, index, and rank at the top.",
+        "tags": ["Next.js", "React", "Technical SEO", "Performance"]
+      },
+      {
+        "number": "02 — HOSTING & SETUP",
+        "title": "Rock-Solid Infrastructure",
+        "desc": "We handle the technical heavy lifting so you don't have to. We host your platform remotely on our robust, enterprise-grade infrastructure—or seamlessly help you set it up locally. No more shared server downtime, plugin conflicts, or slow database queries holding your business back.",
+        "tags": ["Cloud Architecture", "Zero-Downtime", "Secure"]
+      },
+      {
+        "number": "03 — AUTOMATIONS & AI",
+        "title": "Next-Gen Systems",
+        "desc": "Enhance your business with cutting-edge AI and advanced automations. We build bespoke solutions, streamlined internal workflows, and even specialized, high-frequency trading bots. If it costs you time, we reverse-engineer it to run on autopilot.",
+        "tags": ["AI Integrations", "Custom Bots", "Workflows", "Trading Algorithms"]
+      }
+    ],
+    "manifesto": {
+      "title": "The Viffey Standard",
+      "text": "A website is not a brochure. It is a 24/7 sales engine. If your site takes more than 2 seconds to load, you risk losing potential clients. That's why we choose modern, performant frameworks over legacy CMS platforms, ensuring your foundation is built for speed and sustainable growth."
+    }
+  },
+  "aboutPage": {
+    "title": "About Us — Viffey",
+    "description": "Learn more about Viffey, our team, and our engineering philosophy.",
+    "heading": "About Viffey.",
+    "p1": "We specialize in helping businesses like yours succeed online. From website design and development to digital marketing and advertising, we have the tools and expertise to elevate your online presence. Let us help you navigate the evolving world of digital to drive growth and reach your goals.",
+    "p2": "All this comes at little cost to your wallet, and you can reach out for inquiries completely for free."
+  },
+  "contactPage": {
+    "title": "Contact — Viffey",
+    "description": "Get in touch to start building your bespoke digital platform."
+  }
+}

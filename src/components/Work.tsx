@@ -4,45 +4,13 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './Work.module.css';
+import type { Dictionary } from '@/i18n';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const projects = [
-  {
-    id: '01',
-    title: 'Lumina',
-    category: 'Web Design · Development',
-    year: '2024',
-    desc: 'Full rebrand and e-commerce build for a luxury skincare brand. 2.4× conversion lift post-launch.',
-    color: '#1A1714',
-  },
-  {
-    id: '02',
-    title: 'Forma Studio',
-    category: 'Brand Identity',
-    year: '2024',
-    desc: 'Visual identity system for an architecture studio. Wordmark, type system, and print collateral.',
-    color: '#141718',
-  },
-  {
-    id: '03',
-    title: 'Axis Capital',
-    category: 'Web Design · Strategy',
-    year: '2023',
-    desc: 'Digital presence for a private equity firm. Positioning, copy, and a site that commands respect.',
-    color: '#181614',
-  },
-  {
-    id: '04',
-    title: 'Noor Health',
-    category: 'Web Design · Branding',
-    year: '2023',
-    desc: 'End-to-end brand and product website for a digital health startup. Series A accelerant.',
-    color: '#141616',
-  },
-];
+const PROJECT_COLORS = ['#1A1714', '#141718', '#181614', '#141616'];
 
-export default function Work() {
+export default function Work({ dict }: { dict: Dictionary }) {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -69,14 +37,14 @@ export default function Work() {
   return (
     <section ref={sectionRef} className={styles.section} id="work">
       <div className={styles.header}>
-        <span className={styles.label}>Selected Work</span>
+        <span className={styles.label}>{dict.work.label}</span>
         <h2 className={styles.heading}>
-          Recent<br /><em>projects</em>
+          {dict.work.headingLine1}<br /><em>{dict.work.headingLine2}</em>
         </h2>
       </div>
 
       <div className={styles.list}>
-        {projects.map((p) => (
+        {dict.work.projects.map((p, idx) => (
           <article key={p.title} className={styles.item} data-cursor>
             <div className={styles.itemInner}>
               <div className={styles.itemLeft}>
@@ -100,7 +68,7 @@ export default function Work() {
       </div>
 
       <div className={styles.footer}>
-        <span className={styles.label}>All work available upon request</span>
+        <span className={styles.label}>{dict.work.footer}</span>
       </div>
     </section>
   );

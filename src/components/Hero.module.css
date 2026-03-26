@@ -182,3 +182,18 @@
 @media (hover: none), (pointer: coarse) {
   .scrollIndicator { display: none; }
 }
+
+/* RTL adjustments for Arabic */
+:global([dir="rtl"]) .lineWrap {
+  overflow: visible;
+  overflow-y: clip;
+}
+
+:global([dir="rtl"]) .scrollIndicator {
+  right: auto;
+  left: clamp(1.5rem, 5vw, 5rem);
+}
+
+:global([dir="rtl"]) .headlines {
+  text-align: right;
+}
